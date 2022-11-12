@@ -9,12 +9,16 @@ const ERROR = 'error';
 /** @type {ESlintConfig} */
 module.exports = {
     extends: [
+        'plugin:import/recommended',
+        'plugin:n/recommended',
+        'plugin:promise/recommended',
         'standard',
         'plugin:eslint-comments/recommended',
         'plugin:unicorn/recommended',
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:yml/standard',
         'plugin:markdown/recommended',
+        'prettier',
     ],
     env: {
         es2022: true,
@@ -54,7 +58,6 @@ module.exports = {
                 'jsonc/array-bracket-spacing': [ERROR, 'never'],
                 'jsonc/comma-dangle': [ERROR, 'never'],
                 'jsonc/comma-style': [ERROR, 'last'],
-                'jsonc/indent': [ERROR, 2],
                 'jsonc/key-spacing': [ERROR, { beforeColon: false, afterColon: true }],
                 'jsonc/no-octal-escape': ERROR,
                 'jsonc/object-curly-newline': [ERROR, { multiline: true, consistent: true }],
@@ -108,19 +111,19 @@ module.exports = {
                             'engines',
                             'activationEvents',
                             'contributes',
+                            'pnpm',
+                            'overrides',
+                            'resolutions',
+                            'eslintConfig',
+                            'husky',
+                            'simple-git-hooks',
+                            'lint-staged',
                             'scripts',
                             'peerDependencies',
                             'peerDependenciesMeta',
                             'dependencies',
                             'optionalDependencies',
                             'devDependencies',
-                            'pnpm',
-                            'overrides',
-                            'resolutions',
-                            'husky',
-                            'simple-git-hooks',
-                            'lint-staged',
-                            'eslintConfig',
                         ],
                     },
                     {
@@ -191,16 +194,15 @@ module.exports = {
         'import/order': ERROR,
 
         // Common
-        semi: [ERROR, 'never'],
-        curly: [ERROR, 'multi-or-nest', 'consistent'],
-        quotes: [ERROR, 'single'],
+        'curly': [ERROR, 'multi-or-nest', 'consistent'],
+        'quotes': [ERROR, 'single'],
         'quote-props': [ERROR, 'consistent-as-needed'],
         'no-unused-vars': WARN,
         'no-param-reassign': OFF,
         'array-bracket-spacing': [ERROR, 'never'],
         'brace-style': [ERROR, 'stroustrup', { allowSingleLine: true }],
         'block-spacing': [ERROR, 'always'],
-        camelcase: OFF,
+        'camelcase': OFF,
         'comma-spacing': [ERROR, { before: false, after: true }],
         'comma-style': [ERROR, 'last'],
         'comma-dangle': [ERROR, 'always-multiline'],
@@ -210,7 +212,6 @@ module.exports = {
         'no-cond-assign': [ERROR, 'always'],
         'func-call-spacing': [OFF, 'never'],
         'key-spacing': [ERROR, { beforeColon: false, afterColon: true }],
-        indent: [ERROR, 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
         'no-restricted-syntax': [ERROR, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
         'object-curly-spacing': [ERROR, 'always'],
         'no-return-await': OFF,
@@ -275,8 +276,8 @@ module.exports = {
         'array-callback-return': ERROR,
         'block-scoped-var': ERROR,
         'consistent-return': OFF,
-        complexity: [OFF, 11],
-        eqeqeq: [ERROR, 'smart'],
+        'complexity': [OFF, 11],
+        'eqeqeq': [ERROR, 'smart'],
         'no-alert': WARN,
         'no-case-declarations': ERROR,
         'no-multi-spaces': ERROR,
@@ -290,11 +291,14 @@ module.exports = {
         'operator-linebreak': [ERROR, 'before'],
         'no-use-before-define': [ERROR, { functions: false, classes: false, variables: true }],
 
-        // comments
-        'eslint-comments/disable-enable-pair': OFF,
-
         // nodejs
         'n/no-callback-literal': OFF,
+
+        // unicorn
+        'unicorn/prefer-module': OFF,
+
+        // comments
+        'eslint-comments/disable-enable-pair': OFF,
 
         // yml
         'yml/quotes': [ERROR, { prefer: 'single', avoidEscape: false }],
