@@ -13,6 +13,7 @@ module.exports = {
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:yml/standard',
         'plugin:markdown/recommended',
+        'plugin:yml/prettier',
         'prettier',
     ],
     env: {
@@ -65,6 +66,7 @@ module.exports = {
             parser: 'yaml-eslint-parser',
             rules: {
                 'spaced-comment': OFF,
+                'yml/indent': OFF,
             },
         },
         {
@@ -222,7 +224,7 @@ module.exports = {
         // es6
         'no-var': ERROR,
         'prefer-const': [
-            ERROR,
+            WARN,
             {
                 destructuring: 'any',
                 ignoreReadBeforeAssign: true,

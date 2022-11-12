@@ -54,12 +54,14 @@ importers:
 
   packages/react:
     specifiers:
+      '@yutengjing/eslint-config-basic': workspace:*
       '@yutengjing/eslint-config-typescript': workspace:*
       eslint-config-prettier: ^8.5.0
       eslint-plugin-jsx-a11y: ^6.6.1
       eslint-plugin-react: ^7.31.10
       eslint-plugin-react-hooks: ^4.6.0
     dependencies:
+      '@yutengjing/eslint-config-basic': link:../basic
       '@yutengjing/eslint-config-typescript': link:../typescript
       eslint-config-prettier: 8.5.0
       eslint-plugin-jsx-a11y: 6.6.1
