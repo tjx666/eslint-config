@@ -1,0 +1,30 @@
+{
+    "name": "@yutengjing/eslint-config-react",
+    "version": "0.0.1",
+    "description": "",
+    "author": {
+        "name": "YuTengjing",
+        "url": "https://github.com/tjx666",
+        "email": "ytj2713151713@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/tjx666/eslint-config",
+    "keywords": [
+        "eslint-config"
+    ],
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "scripts": {
+        "lint": "eslint . --config=index.js"
+    },
+    "peerDependencies": {
+        "eslint": ">=7.4.0"
+    },
+    "dependencies": {
+        "@yutengjing/eslint-config-ts": "workspace:*",
+        "eslint-plugin-react": "^7.31.10",
+        "eslint-plugin-react-hooks": "^4.6.0"
+    }
+}
