@@ -20,10 +20,12 @@
         "lint": "eslint . --config=index.js"
     },
     "peerDependencies": {
-        "eslint": ">=7.4.0"
+        "eslint": ">=8.27.0"
     },
     "dependencies": {
-        "@yutengjing/eslint-config-ts": "workspace:*",
+        "@yutengjing/eslint-config-typescript": "workspace:*",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-jsx-a11y": "^6.6.1",
         "eslint-plugin-react": "^7.31.10",
         "eslint-plugin-react-hooks": "^4.6.0"
     }

@@ -1,12 +1,14 @@
 module.exports = {
     extends: [
+        '@yutengjing/eslint-config-typescript',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
-        '@yutengjing/eslint-config-ts',
+        'plugin:jsx-a11y/recommended',
+        'prettier',
     ],
     settings: {
         react: {
-            version: '17.0',
+            version: 'detect',
         },
     },
     rules: {

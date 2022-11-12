@@ -10,7 +10,7 @@
     },
     "license": "MIT",
     "eslintConfig": {
-        "extends": "@yutengjing/eslint-config-basic"
+        "extends": "@yutengjing/eslint-config-react"
     },
     "scripts": {
         "preinstall": "npx only-allow pnpm",
@@ -18,7 +18,7 @@
     },
     "devDependencies": {
         "@types/eslint": "^8.4.10",
-        "@yutengjing/eslint-config-basic": "workspace:*",
+        "@yutengjing/eslint-config-react": "workspace:*",
         "bumpp": "^8.2.1",
         "eslint": "^8.27.0",
         "react": "^18.2.0",

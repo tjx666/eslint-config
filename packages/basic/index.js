@@ -1,16 +1,11 @@
-/**
- * @typedef {import('eslint').Linter.Config} ESlintConfig
- */
-
 const OFF = 'off';
 const WARN = 'warn';
 const ERROR = 'error';
 
-/** @type {ESlintConfig} */
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
     extends: [
         'plugin:import/recommended',
-        'plugin:n/recommended',
         'plugin:promise/recommended',
         'standard',
         'plugin:eslint-comments/recommended',
@@ -208,7 +203,6 @@ module.exports = {
         'comma-dangle': [ERROR, 'always-multiline'],
         'no-constant-condition': WARN,
         'no-debugger': ERROR,
-        'no-console': [ERROR, { allow: [WARN, ERROR] }],
         'no-cond-assign': [ERROR, 'always'],
         'func-call-spacing': [OFF, 'never'],
         'key-spacing': [ERROR, { beforeColon: false, afterColon: true }],
@@ -295,6 +289,7 @@ module.exports = {
         'n/no-callback-literal': OFF,
 
         // unicorn
+        'unicorn/filename-case': OFF,
         'unicorn/prefer-module': OFF,
 
         // comments

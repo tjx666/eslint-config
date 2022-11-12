@@ -49,4 +49,4 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 
 ### Thanks
 
-- [@yutengjing/eslint-config](https://github.com/tjx666/eslint-config)
+- [@antfu/eslint-config](https://github.com/antfu/eslint-config)

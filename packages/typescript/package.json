@@ -1,5 +1,5 @@
 {
-    "name": "@yutengjing/eslint-config-ts",
+    "name": "@yutengjing/eslint-config-typescript",
     "version": "0.0.1",
     "description": "",
     "author": {
@@ -23,6 +23,7 @@
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^5.42.1",
         "@typescript-eslint/parser": "^5.42.1",
-        "@yutengjing/eslint-config-basic": "workspace:*"
+        "@yutengjing/eslint-config-basic": "workspace:*",
+        "eslint-config-prettier": "^8.5.0"
     }
 }
