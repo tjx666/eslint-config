@@ -191,35 +191,14 @@ module.exports = {
         'import/order': ERROR,
 
         // Common
-        'curly': [ERROR, 'multi-or-nest', 'consistent'],
-        'quotes': [ERROR, 'single'],
-        'quote-props': [ERROR, 'consistent-as-needed'],
         'no-unused-vars': WARN,
         'no-param-reassign': OFF,
-        'array-bracket-spacing': [ERROR, 'never'],
-        'brace-style': [ERROR, 'stroustrup', { allowSingleLine: true }],
-        'block-spacing': [ERROR, 'always'],
         'camelcase': OFF,
-        'comma-spacing': [ERROR, { before: false, after: true }],
-        'comma-style': [ERROR, 'last'],
-        'comma-dangle': [ERROR, 'always-multiline'],
         'no-constant-condition': WARN,
         'no-debugger': ERROR,
         'no-cond-assign': [ERROR, 'always'],
-        'func-call-spacing': [OFF, 'never'],
-        'key-spacing': [ERROR, { beforeColon: false, afterColon: true }],
         'no-restricted-syntax': [ERROR, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
-        'object-curly-spacing': [ERROR, 'always'],
         'no-return-await': OFF,
-        'space-before-function-paren': [
-            ERROR,
-            {
-                anonymous: 'always',
-                named: 'never',
-                asyncArrow: 'always',
-            },
-        ],
-        'no-multiple-empty-lines': [ERROR, { max: 1, maxBOF: 0, maxEOF: 1 }],
 
         // es6
         'no-var': ERROR,
@@ -249,24 +228,6 @@ module.exports = {
         'prefer-rest-params': ERROR,
         'prefer-spread': ERROR,
         'prefer-template': ERROR,
-        'template-curly-spacing': ERROR,
-        'arrow-parens': [ERROR, 'as-needed', { requireForBlockBody: true }],
-        'generator-star-spacing': OFF,
-        'spaced-comment': [
-            ERROR,
-            'always',
-            {
-                line: {
-                    markers: ['/'],
-                    exceptions: ['/', '#'],
-                },
-                block: {
-                    markers: ['!'],
-                    exceptions: ['*'],
-                    balanced: true,
-                },
-            },
-        ],
 
         // best-practice
         'array-callback-return': ERROR,
@@ -298,7 +259,6 @@ module.exports = {
         'eslint-comments/disable-enable-pair': OFF,
 
         // yml
-        'yml/quotes': [ERROR, { prefer: 'single', avoidEscape: false }],
         'yml/no-empty-document': OFF,
     },
 };

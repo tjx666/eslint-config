@@ -1,5 +1,3 @@
-const basic = require('@yutengjing/eslint-config-basic');
-
 const OFF = 'off';
 const WARN = 'warn';
 const ERROR = 'error';
@@ -17,7 +15,6 @@ module.exports = {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
         },
     },
-    overrides: basic.overrides,
     rules: {
         'import/named': OFF,
 
@@ -43,35 +40,6 @@ module.exports = {
             ERROR,
             { functions: false, classes: false, variables: true },
         ],
-        'brace-style': OFF,
-        '@typescript-eslint/brace-style': [ERROR, 'stroustrup', { allowSingleLine: true }],
-        'comma-dangle': OFF,
-        '@typescript-eslint/comma-dangle': [ERROR, 'always-multiline'],
-        'object-curly-spacing': OFF,
-        '@typescript-eslint/object-curly-spacing': [ERROR, 'always'],
-        'semi': OFF,
-        '@typescript-eslint/semi': [ERROR, 'never'],
-        'quotes': OFF,
-        '@typescript-eslint/quotes': [ERROR, 'single'],
-        'space-before-blocks': OFF,
-        '@typescript-eslint/space-before-blocks': [ERROR, 'always'],
-        'space-before-function-paren': OFF,
-        '@typescript-eslint/space-before-function-paren': [
-            ERROR,
-            {
-                anonymous: 'always',
-                named: 'never',
-                asyncArrow: 'always',
-            },
-        ],
-        'space-infix-ops': OFF,
-        '@typescript-eslint/space-infix-ops': ERROR,
-        'keyword-spacing': OFF,
-        '@typescript-eslint/keyword-spacing': [ERROR, { before: true, after: true }],
-        'comma-spacing': OFF,
-        '@typescript-eslint/comma-spacing': [ERROR, { before: false, after: true }],
-        'no-extra-parens': OFF,
-        '@typescript-eslint/no-extra-parens': [ERROR, 'functions'],
         'no-dupe-class-members': OFF,
         '@typescript-eslint/no-dupe-class-members': ERROR,
         'no-loss-of-precision': OFF,
