@@ -1,3 +1,5 @@
+const OFF = 'off';
+
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
     extends: [
@@ -11,5 +13,8 @@ module.exports = {
         react: {
             version: 'detect',
         },
+    },
+    rules: {
+        'react/react-in-jsx-scope': OFF,
     },
 };
