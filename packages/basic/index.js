@@ -28,6 +28,7 @@ module.exports = {
         '*.d.ts',
         'CHANGELOG.md',
         'dist',
+        'out',
         'LICENSE*',
         'output',
         'coverage',
@@ -122,12 +123,6 @@ module.exports = {
             },
         },
         {
-            files: ['*.d.ts'],
-            rules: {
-                'import/no-duplicates': OFF,
-            },
-        },
-        {
             files: ['*.js'],
             rules: {
                 '@typescript-eslint/no-var-requires': OFF,
@@ -167,15 +162,12 @@ module.exports = {
     ],
     rules: {
         // import
-        'sort-imports': OFF,
-        'import/first': ERROR,
         'import/namespace': OFF,
         'import/no-absolute-path': OFF,
         'import/no-mutable-exports': ERROR,
         'import/no-named-as-default-member': OFF,
         'import/no-named-as-default': OFF,
         'import/no-unresolved': OFF,
-        'import/order': ERROR,
 
         // Common
         'no-unused-vars': WARN,

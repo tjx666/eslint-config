@@ -1,6 +1,3 @@
-const OFF = 'off';
-const ERROR = 'error';
-
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
     extends: [
@@ -14,9 +11,5 @@ module.exports = {
         react: {
             version: 'detect',
         },
-    },
-    rules: {
-        'jsx-quotes': [ERROR, 'prefer-double'],
-        'react/react-in-jsx-scope': OFF,
     },
 };

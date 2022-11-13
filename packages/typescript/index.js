@@ -26,7 +26,6 @@ module.exports = {
         // TS
         '@typescript-eslint/ban-ts-comment': [ERROR, { 'ts-ignore': 'allow-with-description' }],
         '@typescript-eslint/member-delimiter-style': [ERROR, { multiline: { delimiter: 'none' } }],
-        '@typescript-eslint/type-annotation-spacing': [ERROR, {}],
         '@typescript-eslint/consistent-type-imports': [
             ERROR,
             { prefer: 'type-imports', disallowTypeAnnotations: false },
