@@ -1,5 +1,7 @@
-const basic = require('@yutengjing/eslint-config-basic');
+const OFF = 'off';
+const ERROR = 'error';
 
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
     extends: [
         '@yutengjing/eslint-config-typescript',
@@ -13,9 +15,8 @@ module.exports = {
             version: 'detect',
         },
     },
-    overrides: basic.overrides,
     rules: {
-        'jsx-quotes': ['error', 'prefer-double'],
-        'react/react-in-jsx-scope': 'off',
+        'jsx-quotes': [ERROR, 'prefer-double'],
+        'react/react-in-jsx-scope': OFF,
     },
 };

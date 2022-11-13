@@ -23,7 +23,6 @@
         "eslint": ">=8.27.0"
     },
     "dependencies": {
-        "@yutengjing/eslint-config-basic": "workspace:*",
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-jsx-a11y": "^6.6.1",

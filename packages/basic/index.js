@@ -11,9 +11,10 @@ module.exports = {
         'plugin:eslint-comments/recommended',
         'plugin:unicorn/recommended',
         'plugin:jsonc/recommended-with-jsonc',
+        'plugin:jsonc/prettier',
         'plugin:yml/standard',
-        'plugin:markdown/recommended',
         'plugin:yml/prettier',
+        'plugin:markdown/recommended',
         'prettier',
     ],
     env: {
@@ -50,24 +51,10 @@ module.exports = {
         {
             files: ['*.json', '*.json5'],
             parser: 'jsonc-eslint-parser',
-            rules: {
-                'jsonc/array-bracket-spacing': [ERROR, 'never'],
-                'jsonc/comma-dangle': [ERROR, 'never'],
-                'jsonc/comma-style': [ERROR, 'last'],
-                'jsonc/key-spacing': [ERROR, { beforeColon: false, afterColon: true }],
-                'jsonc/no-octal-escape': ERROR,
-                'jsonc/object-curly-newline': [ERROR, { multiline: true, consistent: true }],
-                'jsonc/object-curly-spacing': [ERROR, 'always'],
-                'jsonc/object-property-newline': [ERROR, { allowMultiplePropertiesPerLine: true }],
-            },
         },
         {
             files: ['*.yaml', '*.yml'],
             parser: 'yaml-eslint-parser',
-            rules: {
-                'spaced-comment': OFF,
-                'yml/indent': OFF,
-            },
         },
         {
             files: ['package.json'],

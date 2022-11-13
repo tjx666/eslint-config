@@ -1,3 +1,5 @@
+const basic = require('@yutengjing/eslint-config-basic');
+
 const OFF = 'off';
 const WARN = 'warn';
 const ERROR = 'error';
@@ -15,6 +17,9 @@ module.exports = {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
         },
     },
+    // because plugin:@typescript-eslint/recommended override the parser
+    // the parser of yml, json is set to @typescript-eslint/parser
+    overrides: basic.overrides,
     rules: {
         'import/named': OFF,
 
