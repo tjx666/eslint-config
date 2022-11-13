@@ -10,7 +10,25 @@
     "license": "MIT",
     "homepage": "https://github.com/tjx666/eslint-config",
     "keywords": [
-        "eslint-config"
+        "eslint",
+        "eslint-config",
+        "standard",
+        "comments",
+        "import",
+        "json",
+        "jsonc",
+        "markdown",
+        "node",
+        "promise",
+        "unicorn",
+        "yml",
+        "yaml",
+        "prettier",
+        "typescript",
+        "react",
+        "react-hooks",
+        "jsx",
+        "a11y"
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
@@ -19,11 +37,8 @@
     "files": [
         "index.js"
     ],
-    "scripts": {
-        "lint": "eslint . --config=index.js"
-    },
     "peerDependencies": {
-        "eslint": ">=8.27.0"
+        "eslint": "^8.27.0"
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",

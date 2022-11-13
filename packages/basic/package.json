@@ -1,7 +1,7 @@
 {
     "name": "@yutengjing/eslint-config-basic",
     "version": "0.0.1",
-    "description": "",
+    "description": "eslint config for ts + react project",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -10,20 +10,30 @@
     "license": "MIT",
     "homepage": "https://github.com/tjx666/eslint-config",
     "keywords": [
-        "eslint-config"
+        "eslint",
+        "eslint-config",
+        "standard",
+        "comments",
+        "import",
+        "json",
+        "jsonc",
+        "markdown",
+        "node",
+        "promise",
+        "unicorn",
+        "yml",
+        "yaml",
+        "prettier"
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
     "main": "index.js",
     "files": [
-        "*.js"
+        "index.js"
     ],
-    "scripts": {
-        "lint": "eslint . --config=index.js"
-    },
     "peerDependencies": {
-        "eslint": ">=8.27.0"
+        "eslint": "^8.27.0"
     },
     "dependencies": {
         "eslint-config-prettier": "^8.5.0",

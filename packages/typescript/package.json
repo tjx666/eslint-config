@@ -1,7 +1,7 @@
 {
     "name": "@yutengjing/eslint-config-typescript",
     "version": "0.0.1",
-    "description": "",
+    "description": "eslint config for typescript project",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -10,7 +10,21 @@
     "license": "MIT",
     "homepage": "https://github.com/tjx666/eslint-config",
     "keywords": [
-        "eslint-config"
+        "eslint",
+        "eslint-config",
+        "standard",
+        "comments",
+        "import",
+        "json",
+        "jsonc",
+        "markdown",
+        "node",
+        "promise",
+        "unicorn",
+        "yml",
+        "yaml",
+        "prettier",
+        "typescript"
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
@@ -20,8 +34,8 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": ">=8.27.0",
-        "typescript": ">=4.8.4"
+        "eslint": "^8.27.0",
+        "typescript": "^4.8.4"
     },
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^5.42.1",
