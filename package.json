@@ -21,7 +21,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "test": "eslint .",
-        "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
+        "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish "
     },
     "devDependencies": {
         "@types/eslint": "^8.4.10",

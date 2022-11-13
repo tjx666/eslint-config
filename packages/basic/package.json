@@ -12,6 +12,9 @@
     "keywords": [
         "eslint-config"
     ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "main": "index.js",
     "files": [
         "*.js"
