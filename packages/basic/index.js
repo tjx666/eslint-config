@@ -66,14 +66,14 @@ module.exports = {
                     {
                         pathPattern: '^$',
                         order: [
-                            'publisher',
                             'name',
                             'displayName',
                             'type',
                             'version',
                             'private',
-                            'packageManager',
                             'description',
+                            'packageManager',
+                            'publisher',
                             'author',
                             'license',
                             'funding',
@@ -168,16 +168,17 @@ module.exports = {
         'import/no-named-as-default-member': OFF,
         'import/no-named-as-default': OFF,
         'import/no-unresolved': OFF,
+        'import/order': OFF,
 
         // Common
-        'no-unused-vars': WARN,
-        'no-param-reassign': OFF,
         'camelcase': OFF,
+        'no-cond-assign': [ERROR, 'always'],
         'no-constant-condition': WARN,
         'no-debugger': ERROR,
-        'no-cond-assign': [ERROR, 'always'],
+        'no-param-reassign': OFF,
         'no-restricted-syntax': [ERROR, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
         'no-return-await': OFF,
+        'no-unused-vars': WARN,
 
         // es6
         'no-var': ERROR,
@@ -211,28 +212,37 @@ module.exports = {
         // best-practice
         'array-callback-return': ERROR,
         'block-scoped-var': ERROR,
-        'consistent-return': OFF,
         'complexity': [OFF, 11],
+        'consistent-return': OFF,
         'eqeqeq': [ERROR, 'smart'],
         'no-alert': WARN,
         'no-case-declarations': ERROR,
         'no-multi-spaces': ERROR,
         'no-multi-str': ERROR,
-        'no-with': ERROR,
-        'no-void': ERROR,
-        'no-useless-escape': OFF,
-        'vars-on-top': ERROR,
-        'require-await': OFF,
         'no-return-assign': OFF,
-        'operator-linebreak': [ERROR, 'before'],
         'no-use-before-define': [ERROR, { functions: false, classes: false, variables: true }],
+        'no-useless-escape': OFF,
+        'no-void': ERROR,
+        'no-with': ERROR,
+        'operator-linebreak': [ERROR, 'before'],
+        'require-await': OFF,
+        'vars-on-top': ERROR,
 
         // nodejs
         'n/no-callback-literal': OFF,
 
         // unicorn
         'unicorn/filename-case': OFF,
+        'unicorn/import-style': OFF,
+        'unicorn/no-array-for-each': OFF,
+        'unicorn/no-array-reduce': OFF,
+        'unicorn/no-null': OFF,
+        // auto fix doesn't support groupLength: 4
+        'unicorn/numeric-separators-style': OFF,
         'unicorn/prefer-module': OFF,
+        'unicorn/prefer-top-level-await': OFF,
+        'unicorn/prevent-abbreviations': OFF,
+        'unicorn/switch-case-braces': OFF,
 
         // comments
         'eslint-comments/disable-enable-pair': OFF,

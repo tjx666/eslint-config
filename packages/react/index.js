@@ -1,4 +1,5 @@
 const OFF = 'off';
+const WARN = 'warn';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -16,5 +17,12 @@ module.exports = {
     },
     rules: {
         'react/react-in-jsx-scope': OFF,
+        'react/self-closing-comp': [
+            WARN,
+            {
+                component: true,
+                html: true,
+            },
+        ],
     },
 };
