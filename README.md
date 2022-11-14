@@ -1,6 +1,6 @@
 # @yutengjing/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@yutengjing/eslint-config-react?color=a1b858&label=)](https://npmjs.com/package/@yutengjing/eslint-config) ![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)
+![npm (scoped)](https://img.shields.io/npm/v/@yutengjing/eslint-config-react) ![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)
 
 ## Usage
 
