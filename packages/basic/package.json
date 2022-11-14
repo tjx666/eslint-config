@@ -1,6 +1,6 @@
 {
     "name": "@yutengjing/eslint-config-basic",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "eslint config for ts + react project",
     "author": {
         "name": "YuTengjing",
