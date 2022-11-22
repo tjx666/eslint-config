@@ -1,0 +1,3 @@
+{
+    "extends": "@yutengjing/eslint-config-vue"
+}

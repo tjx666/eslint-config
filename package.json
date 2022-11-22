@@ -2,7 +2,7 @@
     "name": "@yutengjing/eslint-config-monorepo",
     "version": "0.0.5",
     "private": true,
-    "packageManager": "pnpm@7.15.0",
+    "packageManager": "pnpm@7.17.0",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -10,7 +10,7 @@
     },
     "license": "MIT",
     "eslintConfig": {
-        "extends": "@yutengjing/eslint-config-react"
+        "extends": "@yutengjing/eslint-config-typescript"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,json,md}": "prettier --write"
@@ -26,6 +26,8 @@
     "devDependencies": {
         "@types/eslint": "^8.4.10",
         "@yutengjing/eslint-config-react": "workspace:*",
+        "@yutengjing/eslint-config-typescript": "workspace:*",
+        "@yutengjing/eslint-config-vue": "workspace:*",
         "bumpp": "^8.2.1",
         "eslint": "^8.27.0",
         "lint-staged": "^13.0.3",
