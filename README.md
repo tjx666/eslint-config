@@ -1,6 +1,6 @@
 # @yutengjing/eslint-config
 
-[![npm (scoped)](https://img.shields.io/npm/v/@yutengjing/eslint-config-typescript)](https://www.npmjs.com/package/@yutengjing/eslint-config-typescript) [![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)](https://github.com/tjx666/eslint-config/actions/workflows/test.yml)
+[![npm (scoped)](https://img.shields.io/npm/v/@yutengjing/eslint-config-basic)](https://www.npmjs.com/package/@yutengjing/eslint-config-basic) [![npm](https://img.shields.io/npm/dm/@yutengjing/eslint-config-basic)](https://www.npmjs.com/package/@yutengjing/eslint-config-basic) [![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)](https://github.com/tjx666/eslint-config/actions/workflows/test.yml)
 
 ## Usage
 
