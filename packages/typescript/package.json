@@ -34,12 +34,12 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.27.0",
-        "typescript": "^4.8.4"
+        "eslint": "^8.28.0",
+        "typescript": "^4.9.3"
     },
     "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.42.1",
-        "@typescript-eslint/parser": "^5.42.1",
+        "@typescript-eslint/eslint-plugin": "^5.44.0",
+        "@typescript-eslint/parser": "^5.44.0",
         "@yutengjing/eslint-config-basic": "workspace:*",
         "eslint-config-prettier": "^8.5.0"
     }
