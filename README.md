@@ -1,12 +1,12 @@
 # @yutengjing/eslint-config
 
-![npm (scoped)](https://img.shields.io/npm/v/@yutengjing/eslint-config-react) ![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)
+[![npm (scoped)](https://img.shields.io/npm/v/@yutengjing/eslint-config-typescript)](https://www.npmjs.com/package/@yutengjing/eslint-config-typescript) [![test](https://github.com/tjx666/eslint-config/actions/workflows/test.yml/badge.svg)](https://github.com/tjx666/eslint-config/actions/workflows/test.yml)
 
 ## Usage
 
 ### Install
 
-```bash
+```sh
 pnpm add -D eslint @yutengjing/eslint-config
 ```
 
@@ -41,6 +41,21 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 
 ```json
 {
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "json",
+    "json5",
+    "jsonc",
+    "markdown",
+    "yml",
+    "yaml",
+    "html"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }
