@@ -232,11 +232,16 @@ module.exports = {
         // nodejs
         'n/no-callback-literal': OFF,
 
+        // promise
+        'promise/catch-or-return': OFF,
+        'promise/always-return': OFF,
+
         // unicorn
         'unicorn/filename-case': OFF,
         'unicorn/import-style': OFF,
         'unicorn/no-array-for-each': OFF,
         'unicorn/no-array-reduce': OFF,
+        'unicorn/no-await-expression-member': OFF,
         'unicorn/no-null': OFF,
         // auto fix doesn't support groupLength: 4
         'unicorn/numeric-separators-style': OFF,
