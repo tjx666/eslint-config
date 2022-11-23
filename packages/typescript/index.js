@@ -17,9 +17,17 @@ module.exports = {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
         },
     },
-    // because plugin:@typescript-eslint/recommended override the parser
-    // the parser of yml, json is set to @typescript-eslint/parser
-    overrides: basic.overrides,
+    overrides: [
+        // because plugin:@typescript-eslint/recommended override the parser
+        // the parser of yml, json is set to @typescript-eslint/parser
+        ...basic.overrides,
+        {
+            files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+            rules: {
+                'no-useless-constructor': OFF,
+            },
+        },
+    ],
     rules: {
         // TS
         '@typescript-eslint/ban-ts-comment': [ERROR, { 'ts-ignore': 'allow-with-description' }],
