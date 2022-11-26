@@ -17,6 +17,9 @@ module.exports = {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
         },
     },
+    parserOptions: {
+        ecmaVersion: 'latest',
+    },
     overrides: [
         // because plugin:@typescript-eslint/recommended override the parser
         // the parser of yml, json is set to @typescript-eslint/parser

@@ -19,7 +19,13 @@ module.exports = {
             },
         },
     ],
-    extends: ['@yutengjing/eslint-config-typescript', 'plugin:vue/vue3-recommended', 'prettier'],
+    extends: ['plugin:vue/vue3-recommended', '@yutengjing/eslint-config-typescript', 'prettier'],
+    settings: {
+        'import/resolver': {
+            node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts', '.vue'] },
+        },
+    },
+
     rules: {
         'vue/multi-word-component-names': OFF,
         'vue/no-v-html': OFF,
