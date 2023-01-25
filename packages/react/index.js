@@ -20,10 +20,10 @@ module.exports = {
         'react/jsx-no-leaked-render': ERROR,
         'react/react-in-jsx-scope': OFF,
         'react/self-closing-comp': [
-            WARN,
+            ERROR,
             {
                 component: true,
-                html: true,
+                html: false,
             },
         ],
     },
