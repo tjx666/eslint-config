@@ -30,6 +30,8 @@ module.exports = {
             files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
             rules: {
                 'no-useless-constructor': OFF,
+                'jsdoc/require-param-type': OFF,
+                'jsdoc/require-returns-type': OFF,
             },
         },
     ],

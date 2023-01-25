@@ -9,6 +9,7 @@ module.exports = {
         'plugin:promise/recommended',
         'standard',
         'plugin:eslint-comments/recommended',
+        'plugin:jsdoc/recommended',
         'plugin:unicorn/recommended',
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:jsonc/prettier',
@@ -196,6 +197,14 @@ module.exports = {
         // promise
         'promise/catch-or-return': OFF,
         'promise/always-return': OFF,
+
+        // jsdoc
+        'jsdoc/check-types': OFF,
+        'jsdoc/require-jsdoc': OFF,
+        'jsdoc/require-param': OFF,
+        'jsdoc/require-returns-check': OFF,
+        'jsdoc/require-returns-description': OFF,
+        'jsdoc/require-param-description': OFF,
 
         // unicorn
         'unicorn/filename-case': OFF,
