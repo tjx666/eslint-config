@@ -34,13 +34,13 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.28.0",
-        "typescript": "^4.9.3"
+        "eslint": "^8.32.0",
+        "typescript": "^4.9.4"
     },
     "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.44.0",
-        "@typescript-eslint/parser": "^5.44.0",
+        "@typescript-eslint/eslint-plugin": "^5.49.0",
+        "@typescript-eslint/parser": "^5.49.0",
         "@yutengjing/eslint-config-basic": "workspace:*",
-        "eslint-config-prettier": "^8.5.0"
+        "eslint-config-prettier": "^8.6.0"
     }
 }

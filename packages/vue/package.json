@@ -37,11 +37,11 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.28.0"
+        "eslint": "^8.32.0"
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-vue": "^9.7.0"
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-vue": "^9.9.0"
     }
 }
