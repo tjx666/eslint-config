@@ -164,12 +164,20 @@ module.exports = {
     rules: {
         // import
         'import/namespace': OFF,
+        'import/newline-after-import': ERROR,
         'import/no-absolute-path': OFF,
         'import/no-mutable-exports': ERROR,
         'import/no-named-as-default-member': OFF,
         'import/no-named-as-default': OFF,
         'import/no-unresolved': OFF,
-        'import/order': OFF,
+        'import/order': [
+            ERROR,
+            {
+                'alphabetize': { order: 'asc', caseInsensitive: true },
+                'groups': ['builtin', 'external', ['parent', 'sibling', 'index']],
+                'newlines-between': 'always',
+            },
+        ],
 
         // Common
         'camelcase': OFF,
@@ -183,13 +191,9 @@ module.exports = {
 
         // es6
         'no-var': ERROR,
-        'prefer-const': [
-            WARN,
-            {
-                destructuring: 'any',
-                ignoreReadBeforeAssign: true,
-            },
-        ],
+        'prefer-const': [ERROR, { destructuring: 'all' }],
+        'quotes': [ERROR, 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+
         'prefer-arrow-callback': [
             ERROR,
             {

@@ -32,6 +32,18 @@ module.exports = {
         'vue/prefer-import-from-vue': OFF,
         'vue/require-default-prop': OFF,
         'vue/require-prop-types': OFF,
+        'vue/html-self-closing': [
+            'error',
+            {
+                html: {
+                    void: 'always',
+                    normal: 'any',
+                    component: 'always',
+                },
+                svg: 'any',
+                math: 'any',
+            },
+        ],
 
         // reactivity transform
         'vue/no-setup-props-destructure': OFF,
