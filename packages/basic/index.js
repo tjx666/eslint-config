@@ -8,6 +8,7 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:promise/recommended',
         'standard',
+        'plugin:regexp/recommended',
         'plugin:eslint-comments/recommended',
         'plugin:jsdoc/recommended',
         'plugin:unicorn/recommended',
