@@ -47,10 +47,7 @@ module.exports = {
         '@typescript-eslint/prefer-ts-expect-error': ERROR,
 
         // Override JS
-        '@typescript-eslint/no-unused-vars': [
-            WARN,
-            { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-        ],
+        '@typescript-eslint/no-unused-vars': OFF,
         '@typescript-eslint/no-redeclare': ERROR,
         '@typescript-eslint/no-use-before-define': [
             ERROR,

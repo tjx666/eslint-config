@@ -45,7 +45,7 @@ module.exports = {
         '!.vscode',
         '!.vscode-test',
     ],
-    plugins: ['html', 'no-only-tests'],
+    plugins: ['html', 'no-only-tests', 'unused-imports'],
     settings: {
         'import/resolver': {
             node: { extensions: ['.js', '.mjs', '.cjs'] },
@@ -179,7 +179,14 @@ module.exports = {
         'no-param-reassign': OFF,
         'no-restricted-syntax': [ERROR, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
         'no-return-await': OFF,
-        'no-unused-vars': WARN,
+
+        // unused-imports
+        'no-unused-vars': OFF,
+        'unused-imports/no-unused-imports': ERROR,
+        'unused-imports/no-unused-vars': [
+            ERROR,
+            { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+        ],
 
         // es6
         'no-var': ERROR,
