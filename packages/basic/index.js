@@ -246,7 +246,7 @@ module.exports = {
         'jsdoc/require-returns': OFF,
         'jsdoc/require-returns-description': OFF,
         'jsdoc/require-param-description': OFF,
-        'jsdoc/check-line-alignment': [ERROR, 'never'],
+        'jsdoc/check-line-alignment': [WARN, 'never'],
 
         // unicorn
         'unicorn/filename-case': OFF,

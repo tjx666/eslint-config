@@ -1,7 +1,6 @@
 const basic = require('@yutengjing/eslint-config-basic');
 
 const OFF = 'off';
-const WARN = 'warn';
 const ERROR = 'error';
 
 /** @type {import('eslint').Linter.Config} */
