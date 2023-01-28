@@ -41,7 +41,6 @@
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
-        "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-vue": "^9.9.0"
     }
 }

@@ -73,13 +73,11 @@ importers:
   packages/react:
     specifiers:
       '@yutengjing/eslint-config-typescript': workspace:*
-      eslint-config-prettier: ^8.6.0
       eslint-plugin-jsx-a11y: ^6.7.1
       eslint-plugin-react: ^7.32.1
       eslint-plugin-react-hooks: ^4.6.0
     dependencies:
       '@yutengjing/eslint-config-typescript': link:../typescript
-      eslint-config-prettier: 8.6.0
       eslint-plugin-jsx-a11y: 6.7.1
       eslint-plugin-react: 7.32.1
       eslint-plugin-react-hooks: 4.6.0
@@ -89,21 +87,17 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.49.0
       '@typescript-eslint/parser': ^5.49.0
       '@yutengjing/eslint-config-basic': workspace:*
-      eslint-config-prettier: ^8.6.0
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.49.0_wxm6hkjtuois6ojbvd4okzqyxe
       '@typescript-eslint/parser': 5.49.0
       '@yutengjing/eslint-config-basic': link:../basic
-      eslint-config-prettier: 8.6.0
 
   packages/vue:
     specifiers:
       '@yutengjing/eslint-config-typescript': workspace:*
-      eslint-config-prettier: ^8.6.0
       eslint-plugin-vue: ^9.9.0
     dependencies:
       '@yutengjing/eslint-config-typescript': link:../typescript
-      eslint-config-prettier: 8.6.0
       eslint-plugin-vue: 9.9.0
 
 packages:
