@@ -64,11 +64,44 @@ module.exports = {
             files: ['package.json'],
             parser: 'jsonc-eslint-parser',
             rules: {
-                // https://github.com/ota-meshi/eslint-plugin-jsonc/issues/208
                 'jsonc/sort-keys': [
                     ERROR,
+                    // https://github.com/ota-meshi/eslint-plugin-jsonc/issues/208
                     {
-                        pathPattern: 'pnpm.overrides',
+                        pathPattern: '^scripts$',
+                        order: [
+                            {
+                                keyPattern: 'start:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'serve:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'dev:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'build:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'test:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'lint:',
+                                order: { type: 'asc' },
+                            },
+                            {
+                                keyPattern: 'release:',
+                                order: { type: 'asc' },
+                            },
+                        ],
+                    },
+                    {
+                        pathPattern: '^pnpm.overrides$',
                         order: { type: 'asc' },
                     },
                     {
