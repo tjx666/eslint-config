@@ -1,5 +1,5 @@
-const OFF = 'off';
-const ERROR = 'error';
+const off = 'off';
+const error = 'error';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -16,10 +16,10 @@ module.exports = {
         },
     },
     rules: {
-        'react/jsx-no-leaked-render': ERROR,
-        'react/react-in-jsx-scope': OFF,
+        'react/jsx-no-leaked-render': error,
+        'react/react-in-jsx-scope': off,
         'react/self-closing-comp': [
-            ERROR,
+            error,
             {
                 component: true,
                 html: false,

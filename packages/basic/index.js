@@ -1,6 +1,6 @@
-const OFF = 'off';
-const WARN = 'warn';
-const ERROR = 'error';
+const off = 'off';
+const warn = 'warn';
+const error = 'error';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -66,41 +66,7 @@ module.exports = {
             parser: 'jsonc-eslint-parser',
             rules: {
                 'jsonc/sort-keys': [
-                    ERROR,
-                    // https://github.com/ota-meshi/eslint-plugin-jsonc/issues/208
-                    {
-                        pathPattern: '^scripts$',
-                        order: [
-                            {
-                                keyPattern: 'start:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'serve:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'dev:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'build:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'test:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'lint:',
-                                order: { type: 'asc' },
-                            },
-                            {
-                                keyPattern: 'release:',
-                                order: { type: 'asc' },
-                            },
-                        ],
-                    },
+                    error,
                     {
                         pathPattern: '^pnpm.overrides$',
                         order: { type: 'asc' },
@@ -119,52 +85,52 @@ module.exports = {
         {
             files: ['*.js'],
             rules: {
-                '@typescript-eslint/no-var-requires': OFF,
+                '@typescript-eslint/no-var-requires': off,
             },
         },
         {
             files: ['scripts/**/*.*', 'cli.*'],
             rules: {
-                'no-console': OFF,
+                'no-console': off,
             },
         },
         {
             files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
             rules: {
-                'no-unused-expressions': OFF,
-                'no-only-tests/no-only-tests': ERROR,
+                'no-unused-expressions': off,
+                'no-only-tests/no-only-tests': error,
             },
         },
         {
             // Code blocks in markdown file
             files: ['**/*.md/*.*'],
             rules: {
-                '@typescript-eslint/no-redeclare': OFF,
-                '@typescript-eslint/no-unused-vars': OFF,
-                '@typescript-eslint/no-use-before-define': OFF,
-                '@typescript-eslint/no-var-requires': OFF,
-                '@typescript-eslint/comma-dangle': OFF,
-                'import/no-unresolved': OFF,
-                'no-alert': OFF,
-                'no-console': OFF,
-                'no-restricted-imports': OFF,
-                'no-undef': OFF,
-                'no-unused-expressions': OFF,
-                'no-unused-vars': OFF,
+                '@typescript-eslint/no-redeclare': off,
+                '@typescript-eslint/no-unused-vars': off,
+                '@typescript-eslint/no-use-before-define': off,
+                '@typescript-eslint/no-var-requires': off,
+                '@typescript-eslint/comma-dangle': off,
+                'import/no-unresolved': off,
+                'no-alert': off,
+                'no-console': off,
+                'no-restricted-imports': off,
+                'no-undef': off,
+                'no-unused-expressions': off,
+                'no-unused-vars': off,
             },
         },
     ],
     rules: {
         // import
-        'import/namespace': OFF,
-        'import/newline-after-import': ERROR,
-        'import/no-absolute-path': OFF,
-        'import/no-mutable-exports': ERROR,
-        'import/no-named-as-default-member': OFF,
-        'import/no-named-as-default': OFF,
-        'import/no-unresolved': OFF,
+        'import/namespace': off,
+        'import/newline-after-import': error,
+        'import/no-absolute-path': off,
+        'import/no-mutable-exports': error,
+        'import/no-named-as-default-member': off,
+        'import/no-named-as-default': off,
+        'import/no-unresolved': off,
         'import/order': [
-            ERROR,
+            error,
             {
                 'alphabetize': { order: 'asc', caseInsensitive: true },
                 'groups': ['builtin', 'external', ['parent', 'sibling', 'index']],
@@ -173,100 +139,107 @@ module.exports = {
         ],
 
         // Common
-        'camelcase': OFF,
-        'no-cond-assign': [ERROR, 'always'],
-        'no-constant-condition': WARN,
-        'no-debugger': ERROR,
-        'no-param-reassign': OFF,
-        'no-restricted-syntax': [ERROR, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
-        'no-return-await': OFF,
+        'camelcase': off,
+        'no-cond-assign': [error, 'always'],
+        'no-constant-condition': warn,
+        'no-debugger': error,
+        'no-param-reassign': off,
+        'no-restricted-syntax': [error, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
+        'no-return-await': off,
 
         // unused-imports
-        'no-unused-vars': OFF,
-        'unused-imports/no-unused-imports': ERROR,
+        'no-unused-vars': off,
+        'unused-imports/no-unused-imports': error,
         'unused-imports/no-unused-vars': [
-            ERROR,
+            error,
             { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
         ],
 
         // es6
-        'no-var': ERROR,
-        'prefer-const': [ERROR, { destructuring: 'all' }],
-        'quotes': [ERROR, 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+        'no-var': error,
+        'prefer-const': [error, { destructuring: 'all' }],
+        'quotes': [error, 'single', { avoidEscape: true, allowTemplateLiterals: false }],
 
         'prefer-arrow-callback': [
-            ERROR,
+            error,
             {
                 allowNamedFunctions: false,
                 allowUnboundThis: true,
             },
         ],
         'object-shorthand': [
-            ERROR,
+            error,
             'always',
             {
                 ignoreConstructors: false,
                 avoidQuotes: true,
             },
         ],
-        'prefer-exponentiation-operator': ERROR,
-        'prefer-rest-params': ERROR,
-        'prefer-spread': ERROR,
-        'prefer-template': ERROR,
+        'prefer-exponentiation-operator': error,
+        'prefer-rest-params': error,
+        'prefer-spread': error,
+        'prefer-template': error,
 
         // best-practice
-        'array-callback-return': ERROR,
-        'block-scoped-var': ERROR,
-        'complexity': [OFF, 11],
-        'consistent-return': OFF,
-        'eqeqeq': [ERROR, 'smart'],
-        'no-alert': WARN,
-        'no-case-declarations': ERROR,
-        'no-multi-spaces': ERROR,
-        'no-multi-str': ERROR,
-        'no-return-assign': OFF,
-        'no-use-before-define': [ERROR, { functions: false, classes: false, variables: true }],
-        'no-useless-escape': OFF,
-        'no-void': ERROR,
-        'no-with': ERROR,
-        'operator-linebreak': [ERROR, 'before'],
-        'require-await': OFF,
-        'vars-on-top': ERROR,
+        'array-callback-return': error,
+        'block-scoped-var': error,
+        'complexity': [off, 11],
+        'consistent-return': off,
+        'eqeqeq': [error, 'smart'],
+        'no-alert': warn,
+        'no-case-declarations': error,
+        'no-multi-spaces': error,
+        'no-multi-str': error,
+        'no-return-assign': off,
+        'no-use-before-define': [error, { functions: false, classes: false, variables: true }],
+        'no-useless-escape': off,
+        'no-void': error,
+        'no-with': error,
+        'operator-linebreak': [error, 'before'],
+        'require-await': off,
+        'vars-on-top': error,
 
         // nodejs
-        'n/no-callback-literal': OFF,
+        'n/no-callback-literal': off,
 
         // promise
-        'promise/catch-or-return': OFF,
-        'promise/always-return': OFF,
+        'promise/catch-or-return': off,
+        'promise/always-return': off,
 
         // jsdoc
-        'jsdoc/check-types': OFF,
-        'jsdoc/require-jsdoc': OFF,
-        'jsdoc/require-param': OFF,
-        'jsdoc/require-returns': OFF,
-        'jsdoc/require-returns-description': OFF,
-        'jsdoc/require-param-description': OFF,
-        'jsdoc/check-line-alignment': [WARN, 'never'],
+        'jsdoc/check-types': off,
+        'jsdoc/require-jsdoc': off,
+        'jsdoc/require-param': off,
+        'jsdoc/require-returns': off,
+        'jsdoc/require-returns-description': off,
+        'jsdoc/require-param-description': off,
+        'jsdoc/check-line-alignment': [warn, 'never'],
 
         // unicorn
-        'unicorn/filename-case': OFF,
-        'unicorn/import-style': OFF,
-        'unicorn/no-array-for-each': OFF,
-        'unicorn/no-array-reduce': OFF,
-        'unicorn/no-await-expression-member': OFF,
-        'unicorn/no-null': OFF,
+        'unicorn/consistent-destructuring': off,
+        'unicorn/consistent-function-scoping': off,
+        'unicorn/filename-case': off,
+        'unicorn/import-style': off,
+        'unicorn/no-array-callback-reference': off,
+        'unicorn/no-array-for-each': off,
+        'unicorn/no-array-reduce': off,
+        'unicorn/no-await-expression-member': off,
+        'unicorn/no-negated-condition': off,
+        'unicorn/no-null': off,
         // auto fix doesn't support groupLength: 4
-        'unicorn/numeric-separators-style': OFF,
-        'unicorn/prefer-module': OFF,
-        'unicorn/prefer-top-level-await': OFF,
-        'unicorn/prevent-abbreviations': OFF,
-        'unicorn/switch-case-braces': OFF,
+        'unicorn/numeric-separators-style': off,
+        'unicorn/prefer-export-from': [error, { ignoreUsedVariables: true }],
+        'unicorn/prefer-module': off,
+        'unicorn/prefer-spread': off,
+        'unicorn/prefer-ternary': off,
+        'unicorn/prefer-top-level-await': off,
+        'unicorn/prevent-abbreviations': off,
+        'unicorn/switch-case-braces': off,
 
         // comments
-        'eslint-comments/disable-enable-pair': OFF,
+        'eslint-comments/disable-enable-pair': off,
 
         // yml
-        'yml/no-empty-document': OFF,
+        'yml/no-empty-document': off,
     },
 };

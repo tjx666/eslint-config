@@ -1,6 +1,6 @@
-const OFF = 'off';
-const WARN = 'warn';
-const ERROR = 'error';
+const off = 'off';
+const warn = 'warn';
+const error = 'error';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -12,10 +12,10 @@ module.exports = {
                 parser: '@typescript-eslint/parser',
             },
             rules: {
-                'no-undef': OFF,
-                'no-unused-vars': OFF,
+                'no-undef': off,
+                'no-unused-vars': off,
 
-                '@typescript-eslint/no-unused-vars': OFF,
+                '@typescript-eslint/no-unused-vars': off,
             },
         },
     ],
@@ -27,11 +27,11 @@ module.exports = {
     },
 
     rules: {
-        'vue/multi-word-component-names': OFF,
-        'vue/no-v-html': OFF,
-        'vue/prefer-import-from-vue': OFF,
-        'vue/require-default-prop': OFF,
-        'vue/require-prop-types': OFF,
+        'vue/multi-word-component-names': off,
+        'vue/no-v-html': off,
+        'vue/prefer-import-from-vue': off,
+        'vue/require-default-prop': off,
+        'vue/require-prop-types': off,
         'vue/html-self-closing': [
             'error',
             {
@@ -46,58 +46,58 @@ module.exports = {
         ],
 
         // reactivity transform
-        'vue/no-setup-props-destructure': OFF,
+        'vue/no-setup-props-destructure': off,
 
         'vue/component-tags-order': [
-            ERROR,
+            error,
             {
                 order: ['script', 'template', 'style'],
             },
         ],
-        'vue/component-name-in-template-casing': [ERROR, 'PascalCase'],
-        'vue/component-options-name-casing': [ERROR, 'PascalCase'],
-        'vue/custom-event-name-casing': [ERROR, 'camelCase'],
+        'vue/component-name-in-template-casing': [error, 'PascalCase'],
+        'vue/component-options-name-casing': [error, 'PascalCase'],
+        'vue/custom-event-name-casing': [error, 'camelCase'],
         'vue/define-macros-order': [
-            ERROR,
+            error,
             {
                 order: ['defineProps', 'defineEmits'],
             },
         ],
         'vue/html-comment-content-spacing': [
-            ERROR,
+            error,
             'always',
             {
                 exceptions: ['-'],
             },
         ],
-        'vue/no-restricted-v-bind': [ERROR, '/^v-/'],
-        'vue/no-useless-v-bind': ERROR,
-        'vue/no-v-text-v-html-on-component': ERROR,
-        'vue/padding-line-between-blocks': [ERROR, 'always'],
-        'vue/prefer-separate-static-class': ERROR,
+        'vue/no-restricted-v-bind': [error, '/^v-/'],
+        'vue/no-useless-v-bind': error,
+        'vue/no-v-text-v-html-on-component': error,
+        'vue/padding-line-between-blocks': [error, 'always'],
+        'vue/prefer-separate-static-class': error,
 
         // extensions
-        'vue/dot-notation': [ERROR, { allowKeywords: true }],
-        'vue/eqeqeq': [ERROR, 'smart'],
-        'vue/no-constant-condition': WARN,
-        'vue/no-empty-pattern': ERROR,
-        'vue/no-irregular-whitespace': ERROR,
-        'vue/no-loss-of-precision': ERROR,
+        'vue/dot-notation': [error, { allowKeywords: true }],
+        'vue/eqeqeq': [error, 'smart'],
+        'vue/no-constant-condition': warn,
+        'vue/no-empty-pattern': error,
+        'vue/no-irregular-whitespace': error,
+        'vue/no-loss-of-precision': error,
         'vue/no-restricted-syntax': [
-            ERROR,
+            error,
             'DebuggerStatement',
             'LabeledStatement',
             'WithStatement',
         ],
-        'vue/no-sparse-arrays': ERROR,
+        'vue/no-sparse-arrays': error,
         'vue/object-shorthand': [
-            ERROR,
+            error,
             'always',
             {
                 ignoreConstructors: false,
                 avoidQuotes: true,
             },
         ],
-        'vue/prefer-template': ERROR,
+        'vue/prefer-template': error,
     },
 };

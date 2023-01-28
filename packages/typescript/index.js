@@ -1,7 +1,7 @@
 const basic = require('@yutengjing/eslint-config-basic');
 
-const OFF = 'off';
-const ERROR = 'error';
+const off = 'off';
+const error = 'error';
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
@@ -28,34 +28,34 @@ module.exports = {
         {
             files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
             rules: {
-                'no-useless-constructor': OFF,
-                'jsdoc/require-param-type': OFF,
-                'jsdoc/require-returns-check': OFF,
-                'jsdoc/require-returns-type': OFF,
+                'no-useless-constructor': off,
+                'jsdoc/require-param-type': off,
+                'jsdoc/require-returns-check': off,
+                'jsdoc/require-returns-type': off,
             },
         },
     ],
     rules: {
         // TS
-        '@typescript-eslint/ban-ts-comment': [ERROR, { 'ts-ignore': 'allow-with-description' }],
+        '@typescript-eslint/ban-ts-comment': [error, { 'ts-ignore': 'allow-with-description' }],
         '@typescript-eslint/consistent-type-imports': [
-            ERROR,
+            error,
             { prefer: 'type-imports', disallowTypeAnnotations: false },
         ],
-        '@typescript-eslint/consistent-type-definitions': [ERROR, 'interface'],
-        '@typescript-eslint/prefer-ts-expect-error': ERROR,
+        '@typescript-eslint/consistent-type-definitions': [error, 'interface'],
+        '@typescript-eslint/prefer-ts-expect-error': error,
 
         // Override JS
-        '@typescript-eslint/no-unused-vars': OFF,
-        '@typescript-eslint/no-redeclare': ERROR,
+        '@typescript-eslint/no-unused-vars': off,
+        '@typescript-eslint/no-redeclare': error,
         '@typescript-eslint/no-use-before-define': [
-            ERROR,
+            error,
             { functions: false, classes: false, variables: true },
         ],
-        '@typescript-eslint/no-dupe-class-members': ERROR,
-        '@typescript-eslint/no-loss-of-precision': ERROR,
+        '@typescript-eslint/no-dupe-class-members': error,
+        '@typescript-eslint/no-loss-of-precision': error,
         '@typescript-eslint/lines-between-class-members': [
-            ERROR,
+            error,
             'always',
             { exceptAfterSingleLine: true },
         ],
@@ -72,19 +72,19 @@ module.exports = {
         // '@typescript-eslint/no-misused-promises': ERROR,
 
         // off
-        '@typescript-eslint/ban-ts-ignore': OFF,
-        '@typescript-eslint/ban-types': OFF,
-        '@typescript-eslint/consistent-indexed-object-style': OFF,
-        '@typescript-eslint/explicit-function-return-type': OFF,
-        '@typescript-eslint/explicit-member-accessibility': OFF,
-        '@typescript-eslint/explicit-module-boundary-types': OFF,
-        '@typescript-eslint/naming-convention': OFF,
-        '@typescript-eslint/no-empty-function': OFF,
-        '@typescript-eslint/no-empty-interface': OFF,
-        '@typescript-eslint/no-explicit-any': OFF,
-        '@typescript-eslint/no-namespace': OFF,
-        '@typescript-eslint/no-non-null-assertion': OFF,
-        '@typescript-eslint/parameter-properties': OFF,
-        '@typescript-eslint/triple-slash-reference': OFF,
+        '@typescript-eslint/ban-ts-ignore': off,
+        '@typescript-eslint/ban-types': off,
+        '@typescript-eslint/consistent-indexed-object-style': off,
+        '@typescript-eslint/explicit-function-return-type': off,
+        '@typescript-eslint/explicit-member-accessibility': off,
+        '@typescript-eslint/explicit-module-boundary-types': off,
+        '@typescript-eslint/naming-convention': off,
+        '@typescript-eslint/no-empty-function': off,
+        '@typescript-eslint/no-empty-interface': off,
+        '@typescript-eslint/no-explicit-any': off,
+        '@typescript-eslint/no-namespace': off,
+        '@typescript-eslint/no-non-null-assertion': off,
+        '@typescript-eslint/parameter-properties': off,
+        '@typescript-eslint/triple-slash-reference': off,
     },
 };
