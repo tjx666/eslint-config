@@ -138,6 +138,8 @@ module.exports = {
             },
         ],
 
+        'security/detect-object-injection': off,
+
         // Common
         'camelcase': off,
         'no-cond-assign': [error, 'always'],
