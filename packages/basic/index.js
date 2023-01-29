@@ -41,10 +41,10 @@ module.exports = {
         'pnpm-lock.yaml',
         'yarn.lock',
         '__snapshots__',
+        '.vscode-test',
         '!.github',
         '!.vitepress',
         '!.vscode',
-        '!.vscode-test',
     ],
     plugins: ['html', 'no-only-tests', 'unused-imports'],
     settings: {
