@@ -6,17 +6,36 @@
 
 ### Install
 
+eslint is peerDependencies, make sure you had already installed eslint.
+
 ```sh
-pnpm add -D eslint @yutengjing/eslint-config
+# npm
+npm install -D @yutengjing/eslint-config
+
+# pnpm
+pnpm add -D @yutengjing/eslint-config
+
+# yarn
+yarn add -D @yutengjing/eslint-config
 ```
 
-### Config `.eslintrc`
+### Integrate
 
----
+add this preset to `.eslintrc` or `.eslintrc.js`
 
 ```json
 {
   "extends": "@yutengjing/eslint-config-react"
+}
+```
+
+or you can simply add it to package.json:
+
+```json
+{
+  "eslintConfig": {
+    "extends": "@yutengjing/eslint-config-typescript"
+  }
 }
 ```
 
@@ -62,6 +81,10 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 }
 ```
 
-### Thanks
+## Thanks
 
 - [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+
+## Related
+
+- [@yutengjing/prettier-config](https://github.com/tjx666/prettier-config/tree/main)
