@@ -8,15 +8,18 @@
 
 eslint is peerDependencies, make sure you had already installed eslint.
 
-```sh
+```shell
 # npm
-npm install -D @yutengjing/eslint-config
+npm add -D @yutengjing/eslint-config
 
 # pnpm
 pnpm add -D @yutengjing/eslint-config
 
 # yarn
 yarn add -D @yutengjing/eslint-config
+
+# bun
+bun add -d @yutengjing/eslint-config
 ```
 
 ### Integrate
