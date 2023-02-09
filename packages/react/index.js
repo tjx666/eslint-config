@@ -1,3 +1,5 @@
+// @ts-check
+
 const off = 'off';
 const error = 'error';
 
