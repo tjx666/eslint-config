@@ -1,3 +1,5 @@
+// @ts-check
+
 const off = 'off';
 const warn = 'warn';
 const error = 'error';
@@ -13,6 +15,7 @@ module.exports = {
         'plugin:eslint-comments/recommended',
         'plugin:jsdoc/recommended',
         'plugin:unicorn/recommended',
+        'plugin:json-schema-validator/recommended',
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:jsonc/prettier',
         'plugin:yml/standard',
@@ -56,6 +59,35 @@ module.exports = {
         {
             files: ['*.json', '*.json5'],
             parser: 'jsonc-eslint-parser',
+            rules: {
+                'json-schema-validator/no-invalid': [
+                    error,
+                    {
+                        schemas: [
+                            {
+                                fileMatch: ['package.json'],
+                                schema: {
+                                    type: 'object',
+                                    properties: {
+                                        pnpm: {
+                                            type: 'object',
+                                            properties: {
+                                                overrides: {
+                                                    type: 'object',
+                                                    additionalProperties: {
+                                                        type: 'string',
+                                                        pattern: '^[^\\^].+',
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                ],
+            },
         },
         {
             files: ['*.yaml', '*.yml'],
