@@ -26,7 +26,6 @@ module.exports = {
     overrides: [
         // because plugin:@typescript-eslint/recommended override the parser
         // the parser of yml, json is set to @typescript-eslint/parser
-        // @ts-expect-error can't be undefined
         ...basic.overrides,
         {
             files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
