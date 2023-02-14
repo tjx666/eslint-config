@@ -2,7 +2,7 @@
     "name": "@yutengjing/eslint-config-monorepo",
     "version": "0.2.4",
     "private": true,
-    "packageManager": "pnpm@7.26.1",
+    "packageManager": "pnpm@7.27.0",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -24,13 +24,13 @@
         "release": "bumpp -c \"release: v%s\" package.json packages/*/package.json && pnpm -r publish"
     },
     "devDependencies": {
-        "@types/eslint": "^8.21.0",
+        "@types/eslint": "^8.21.1",
         "@yutengjing/eslint-config-react": "workspace:*",
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "@yutengjing/eslint-config-vue": "workspace:*",
         "bumpp": "^8.2.1",
-        "eslint": "^8.33.0",
-        "lint-staged": "^13.1.1",
+        "eslint": "^8.34.0",
+        "lint-staged": "^13.1.2",
         "prettier": "^2.8.4",
         "react": "^18.2.0",
         "rimraf": "^4.1.2",
