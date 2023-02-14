@@ -180,6 +180,15 @@ module.exports = {
         'no-param-reassign': off,
         'no-restricted-syntax': [error, 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
         'no-return-await': off,
+        // overridden by eslint-config-standard
+        'no-unused-expressions': [
+            error,
+            {
+                allowShortCircuit: false,
+                allowTernary: false,
+                allowTaggedTemplates: false,
+            },
+        ],
 
         // unused-imports
         'no-unused-vars': off,
