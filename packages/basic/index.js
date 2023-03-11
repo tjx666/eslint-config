@@ -170,7 +170,11 @@ module.exports = {
             },
         ],
 
+        // security
+        // disable because too annoying
+        'security/detect-non-literal-fs-filename': off,
         'security/detect-object-injection': off,
+        'security/detect-unsafe-regex': off,
 
         // Common
         'camelcase': off,
@@ -263,8 +267,11 @@ module.exports = {
         'unicorn/consistent-function-scoping': off,
         'unicorn/filename-case': off,
         'unicorn/import-style': off,
+        // use eslint-comments/no-unlimited-disable instead
+        'unicorn/no-abusive-eslint-disable': off,
         'unicorn/no-array-callback-reference': off,
         'unicorn/no-array-for-each': off,
+        'unicorn/no-array-push-push': off,
         'unicorn/no-array-reduce': off,
         'unicorn/no-await-expression-member': off,
         'unicorn/no-negated-condition': off,
