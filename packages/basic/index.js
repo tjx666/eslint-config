@@ -263,6 +263,8 @@ module.exports = {
         'jsdoc/check-line-alignment': [warn, 'never'],
 
         // unicorn
+        // use eslint-plugin-regexp instead
+        'unicorn/better-regex': off,
         'unicorn/consistent-destructuring': off,
         'unicorn/consistent-function-scoping': off,
         'unicorn/filename-case': off,
