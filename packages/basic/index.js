@@ -57,7 +57,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['*.json', '*.json5'],
+            files: ['*.json', '*.jsonc', '*.json5'],
             parser: 'jsonc-eslint-parser',
             rules: {
                 'json-schema-validator/no-invalid': [
