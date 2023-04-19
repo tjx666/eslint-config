@@ -39,7 +39,7 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.36.0"
+        "eslint": "^8.38.0"
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",

@@ -10,6 +10,9 @@ module.exports = {
         {
             files: ['*.vue'],
             parser: 'vue-eslint-parser',
+            env: {
+                'vue/setup-compiler-macros': true,
+            },
             parserOptions: {
                 parser: '@typescript-eslint/parser',
             },

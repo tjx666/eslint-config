@@ -10,7 +10,6 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:promise/recommended',
         'standard',
-        'plugin:security/recommended',
         'plugin:regexp/recommended',
         'plugin:eslint-comments/recommended',
         'plugin:jsdoc/recommended',
@@ -154,9 +153,11 @@ module.exports = {
     ],
     rules: {
         // import
+        'import/extensions': [error, 'ignorePackages', { js: 'never', ts: 'never', tsx: 'never' }],
         'import/namespace': off,
         'import/newline-after-import': error,
         'import/no-absolute-path': off,
+        'import/no-duplicates': error,
         'import/no-mutable-exports': error,
         'import/no-named-as-default-member': off,
         'import/no-named-as-default': off,
@@ -169,12 +170,6 @@ module.exports = {
                 'newlines-between': 'always',
             },
         ],
-
-        // security
-        // disable because too annoying
-        'security/detect-non-literal-fs-filename': off,
-        'security/detect-object-injection': off,
-        'security/detect-unsafe-regex': off,
 
         // Common
         'camelcase': off,
@@ -205,6 +200,7 @@ module.exports = {
         // es6
         'no-var': error,
         'prefer-const': [error, { destructuring: 'all' }],
+        'prefer-destructuring': [error, { array: false }],
         'quotes': [error, 'single', { avoidEscape: true, allowTemplateLiterals: false }],
 
         'prefer-arrow-callback': [

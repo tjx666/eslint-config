@@ -39,6 +39,7 @@ module.exports = {
     ],
     rules: {
         // TS
+        '@typescript-eslint/array-type': [error, { default: 'array-simple' }],
         '@typescript-eslint/ban-ts-comment': [error, { 'ts-ignore': 'allow-with-description' }],
         '@typescript-eslint/consistent-type-imports': [
             error,
