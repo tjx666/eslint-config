@@ -24,7 +24,12 @@ module.exports = {
             },
         },
     ],
-    extends: ['plugin:vue/vue3-recommended', '@yutengjing/eslint-config-typescript', 'prettier'],
+    extends: [
+        'plugin:vue/vue3-recommended',
+        '@yutengjing/eslint-config-typescript',
+        'plugin:css/recommended',
+        'prettier',
+    ],
     settings: {
         'import/resolver': {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts', '.vue'] },

@@ -20,6 +20,7 @@ module.exports = {
         'plugin:yml/standard',
         'plugin:yml/prettier',
         'plugin:markdown/recommended',
+        'plugin:node-dependencies/recommended',
         'prettier',
     ],
     env: {
