@@ -19,6 +19,8 @@
     },
     "scripts": {
         "preinstall": "npx only-allow pnpm",
+        "clean": "rm -rf node_modules && pnpm -r --parallel exec rm -rf node_modules",
+        "reinstall": "rm -f pnpm-lock.yaml && pnpm clean && pnpm install",
         "test": "eslint .",
         "release": "bumpp -c \"release: v%s\" package.json packages/*/package.json && pnpm -r publish"
     },
