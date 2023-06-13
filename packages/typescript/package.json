@@ -1,6 +1,6 @@
 {
     "name": "@yutengjing/eslint-config-typescript",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "eslint config for typescript project",
     "author": {
         "name": "YuTengjing",
