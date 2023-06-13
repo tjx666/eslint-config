@@ -10,16 +10,16 @@ eslint is peerDependencies, make sure you had already installed eslint.
 
 ```shell
 # npm
-npm add -D @yutengjing/eslint-config
+npm add -D @yutengjing/eslint-config-typescript
 
 # pnpm
-pnpm add -D @yutengjing/eslint-config
+pnpm add -D @yutengjing/eslint-config-typescript
 
 # yarn
-yarn add -D @yutengjing/eslint-config
+yarn add -D @yutengjing/eslint-config-typescript
 
 # bun
-bun add -d @yutengjing/eslint-config
+bun add -d @yutengjing/eslint-config-typescript
 ```
 
 ### Integrate
@@ -28,7 +28,7 @@ add this preset to `.eslintrc` or `.eslintrc.js`
 
 ```json
 {
-  "extends": "@yutengjing/eslint-config-react"
+  "extends": "@yutengjing/eslint-config-typescript"
 }
 ```
 
@@ -91,3 +91,4 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 ## Related
 
 - [@yutengjing/prettier-config](https://github.com/tjx666/prettier-config/tree/main)
+- [@yutengjing/tsconfig](https://github.com/tjx666/tsconfig/tree/main)

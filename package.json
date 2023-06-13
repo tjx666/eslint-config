@@ -21,7 +21,7 @@
         "preinstall": "npx only-allow pnpm",
         "clean": "rm -rf node_modules && pnpm -r --parallel exec rm -rf node_modules",
         "reinstall": "rm -f pnpm-lock.yaml && pnpm clean && pnpm install",
-        "test": "eslint .",
+        "test": "pnpm -r test",
         "release": "bumpp -c \"release: v%s\" package.json packages/*/package.json && pnpm -r publish"
     },
     "devDependencies": {
@@ -31,11 +31,13 @@
         "@yutengjing/eslint-config-vue": "workspace:*",
         "bumpp": "^9.1.1",
         "eslint": "^8.42.0",
+        "eslint-define-config": "^1.20.0",
         "lint-staged": "^13.2.2",
         "prettier": "^2.8.8",
         "react": "^18.2.0",
         "rimraf": "^5.0.1",
         "simple-git-hooks": "^2.8.1",
-        "typescript": "^5.1.3"
+        "typescript": "^5.1.3",
+        "vite": "^4.3.9"
     }
 }
