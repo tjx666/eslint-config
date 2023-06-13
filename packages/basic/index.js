@@ -174,6 +174,7 @@ module.exports = {
 
         // Common
         'camelcase': off,
+        'no-await-in-loop': error,
         'no-cond-assign': [error, 'always'],
         'no-constant-condition': warn,
         'no-debugger': error,
