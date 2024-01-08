@@ -11,6 +11,7 @@
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript"
     },
+    "prettier": "@yutengjing/prettier-config",
     "lint-staged": {
         "*.{js,jsx,ts,tsx,json,md}": "prettier --write"
     },
@@ -29,6 +30,7 @@
         "@yutengjing/eslint-config-react": "workspace:*",
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "@yutengjing/eslint-config-vue": "workspace:*",
+        "@yutengjing/prettier-config": "^1.0.0",
         "bumpp": "^9.1.1",
         "eslint": "^8.42.0",
         "eslint-define-config": "^1.20.0",
