@@ -36,9 +36,11 @@
     },
     "devDependencies": {
         "@types/eslint": "^8.56.1",
+        "@types/node": "^20.10.7",
         "@yutengjing/eslint-config-react": "workspace:*",
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "@yutengjing/eslint-config-vue": "workspace:*",
+        "@yutengjing/eslint-plugin": "workspace:*",
         "@yutengjing/prettier-config": "^1.0.0",
         "@yutengjing/tsconfig-node-commonjs": "^0.0.3",
         "bumpp": "^9.2.1",

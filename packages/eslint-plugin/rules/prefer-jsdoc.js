@@ -83,12 +83,15 @@ module.exports = {
  * @param {RuleContext} ctx
  */
 function checkCommentBeforeNode(ctx, propertyNode) {
-    const sourceCode = ctx.getSourceCode();
+    const { sourceCode } = ctx;
     const commentsBefore = sourceCode.getCommentsBefore(propertyNode);
     if (commentsBefore.length === 0) return;
 
     // 注释和节点之间有空行就不处理
-    const textBetween = sourceCode.text.slice(commentsBefore[0].range[1], propertyNode.range[1]);
+    const textBetween = sourceCode.text.slice(
+        commentsBefore.at(-1).range[1],
+        propertyNode.range[0],
+    );
     let eolCount = 0;
     for (const char of textBetween) {
         if (char === '\n') {
@@ -159,7 +162,7 @@ function checkCommentBeforeNode(ctx, propertyNode) {
  * @param {RuleContext} ctx
  */
 function checkCommentAfterNode(ctx, propertyNode) {
-    const sourceCode = ctx.getSourceCode();
+    const { sourceCode } = ctx;
     const commentsAfter = sourceCode.getCommentsAfter(propertyNode);
     if (commentsAfter.length === 0) return;
 

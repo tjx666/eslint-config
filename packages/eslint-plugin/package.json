@@ -1,11 +1,14 @@
 {
     "name": "@yutengjing/eslint-plugin",
-    "exports": "./index.js",
+    "version": "0.4.2",
+    "main": "./index.js",
     "files": [
         "index.js",
         "rules"
     ],
-    "scripts": {},
+    "scripts": {
+        "test": "mocha tests --recursive"
+    },
     "dependencies": {
         "@typescript-eslint/utils": "^6.18.1",
         "autocorrect-node": "^2.9.0"

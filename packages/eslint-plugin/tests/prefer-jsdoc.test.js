@@ -3,7 +3,7 @@
 const { ruleTester } = require('./utils');
 const rule = require('../rules/prefer-jsdoc');
 
-const [MESSAGE_ID_DEFAULT, MESSAGE_ID_MANUALLY_FIX] = Object.keys(rule.meta.messages);
+const [MESSAGE_ID_DEFAULT] = Object.keys(rule.meta.messages);
 
 const fixedCode = `
 interface I {
@@ -93,86 +93,54 @@ ruleTester.run('prefer-jsdoc', rule, {
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode,
         },
         {
             code: errorCode2,
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode2,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode2,
         },
         {
             code: errorCode3,
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode3,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode3,
         },
         {
             code: errorCode4,
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode4,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode4,
         },
         {
             code: errorCode5,
-            only: true,
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode5,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode5,
         },
         {
             code: errorCode6,
-            only: true,
             errors: [
                 {
                     messageId: MESSAGE_ID_DEFAULT,
-                    suggestions: [
-                        {
-                            messageId: MESSAGE_ID_MANUALLY_FIX,
-                            output: fixedCode6,
-                        },
-                    ],
                 },
             ],
+            output: fixedCode6,
         },
     ],
 });

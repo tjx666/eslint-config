@@ -16,7 +16,7 @@ const create = (context) => {
     const { options } = context;
     let pkg;
     try {
-        pkg = JSON.parse(context.getSourceCode().getText());
+        pkg = JSON.parse(context.sourceCode.getText());
     } catch {
         return {};
     }

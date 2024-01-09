@@ -6,7 +6,7 @@ const MESSAGE_ID_DEFAULT = 'default';
 
 /** @type {RuleCreate} */
 const create = (context) => {
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
     return {
         Program() {
             const comments = sourceCode.getAllComments();

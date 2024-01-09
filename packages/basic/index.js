@@ -50,7 +50,7 @@ module.exports = defineConfig({
         '!.vitepress',
         '!.vscode',
     ],
-    plugins: ['html', 'no-only-tests', 'unused-imports'],
+    plugins: ['html', 'no-only-tests', 'unused-imports', '@yutengjing'],
     settings: {
         'import/resolver': {
             node: { extensions: ['.js', '.mjs', '.cjs'] },
@@ -154,6 +154,11 @@ module.exports = defineConfig({
         },
     ],
     rules: {
+        '@yutengjing/comment-autocorrect': error,
+        '@yutengjing/no-declare-implicit-any-var': error,
+        '@yutengjing/no-vue-filename-index': error,
+        '@yutengjing/prefer-jsdoc': error,
+
         // import
         'import/extensions': [error, 'ignorePackages', { js: 'never', ts: 'never', tsx: 'never' }],
         'import/namespace': off,

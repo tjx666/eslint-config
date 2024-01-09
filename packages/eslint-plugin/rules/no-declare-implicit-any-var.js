@@ -1,25 +1,35 @@
 'use strict';
 
+const path = require('node:path');
+
 const MESSAGE_ID_DEFAULT = 'default';
 
+const tsFileExts = new Set(['ts', 'tsx', 'cts', 'mts'].map((ext) => `.${ext}`));
 /** @type {RuleCreate} */
 const create = (context) => {
+    const ext = path.extname(context.filename).toLowerCase();
     // 只处理 .ts 和 lang=ts 的 .vue 文件
-    if (
-        context.filename.endsWith('.vue') &&
-        !/<script\s[^>]*?\blang=['"](ts)['"][^>]*>/.test(context.getSourceCode().getText())
-    ) {
-        return {};
-    }
+    const isTs =
+        tsFileExts.has(ext) ||
+        (ext === '.vue' &&
+            /<script\s[^>]*?\blang=['"]ts['"][^>]*>/.test(context.sourceCode.getText()));
+    if (!isTs) return {};
 
     return {
         VariableDeclaration(node) {
-            // 排除 for (let item of arr) 这种情况
+            // except for (let item of arr)
             if (node.parent?.type === 'ForOfStatement') return;
 
-            if (node.kind === 'let') {
+            if (new Set(['const', 'let']).has(node.kind)) {
                 for (const declarator of node.declarations) {
-                    if (declarator.init === null && declarator.id.typeAnnotation == null) {
+                    const { init } = declarator;
+                    // let a;
+                    // let a = [];
+                    if (
+                        declarator.id.typeAnnotation == null &&
+                        (init === null ||
+                            (init.type === 'ArrayExpression' && init.elements.length === 0))
+                    ) {
                         context.report({
                             node: declarator,
                             messageId: MESSAGE_ID_DEFAULT,
@@ -37,7 +47,7 @@ module.exports = {
         type: 'suggestion',
         schema: [],
         messages: {
-            [MESSAGE_ID_DEFAULT]: '禁止隐式声明类型为 any 的变量',
+            [MESSAGE_ID_DEFAULT]: "don't declare variable without type",
         },
     },
     create,
