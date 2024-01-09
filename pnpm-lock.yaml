@@ -175,9 +175,6 @@ importers:
 
   packages/eslint-plugin:
     dependencies:
-      '@typescript-eslint/utils':
-        specifier: ^6.18.1
-        version: 6.18.1(eslint@8.56.0)(typescript@5.3.3)
       autocorrect-node:
         specifier: ^2.9.0
         version: 2.9.0

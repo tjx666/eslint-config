@@ -6,11 +6,14 @@
         "index.js",
         "rules"
     ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
+    },
     "scripts": {
         "test": "mocha tests --recursive"
     },
     "dependencies": {
-        "@typescript-eslint/utils": "^6.18.1",
         "autocorrect-node": "^2.9.0"
     },
     "devDependencies": {
