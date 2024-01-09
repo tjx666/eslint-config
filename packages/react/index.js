@@ -1,10 +1,11 @@
 // @ts-check
 
+const { defineConfig } = require('eslint-define-config');
+
 const off = 'off';
 const error = 'error';
 
-/** @type {import('eslint').Linter.Config} */
-module.exports = {
+module.exports = defineConfig({
     extends: [
         '@yutengjing/eslint-config-typescript',
         'plugin:react/recommended',
@@ -29,4 +30,4 @@ module.exports = {
             },
         ],
     },
-};
+});

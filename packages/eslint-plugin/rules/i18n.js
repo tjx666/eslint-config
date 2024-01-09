@@ -11,7 +11,7 @@ function containsChineseCharacters(str) {
 }
 
 /**
- * @param {Context} context
+ * @param {RuleContext} context
  */
 function checkStringLiteral(context, node) {
     if (containsChineseCharacters(node.value)) {

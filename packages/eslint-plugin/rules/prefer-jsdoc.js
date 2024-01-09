@@ -12,7 +12,7 @@ function isJsdoc(comment) {
 }
 
 /**
- * @param {Context} ctx
+ * @param {RuleContext} ctx
  * @param {TSPropertySignature[]} propertyNodeList
  */
 function checkNodes(ctx, propertyNodeList) {
@@ -80,7 +80,7 @@ module.exports = {
 };
 
 /**
- * @param {Context} ctx
+ * @param {RuleContext} ctx
  */
 function checkCommentBeforeNode(ctx, propertyNode) {
     const sourceCode = ctx.getSourceCode();
@@ -156,7 +156,7 @@ function checkCommentBeforeNode(ctx, propertyNode) {
 }
 
 /**
- * @param {Context} ctx
+ * @param {RuleContext} ctx
  */
 function checkCommentAfterNode(ctx, propertyNode) {
     const sourceCode = ctx.getSourceCode();

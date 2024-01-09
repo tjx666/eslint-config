@@ -1,5 +1,5 @@
 /**
- * @param {Context} context
+ * @param {RuleContext} context
  */
 function isInVueSfc(context) {
     return Boolean(context.parserServices.defineTemplateBodyVisitor);

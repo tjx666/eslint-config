@@ -1,12 +1,12 @@
 // @ts-check
 
 const basic = require('@yutengjing/eslint-config-basic');
+const { defineConfig } = require('eslint-define-config');
 
 const off = 'off';
 const error = 'error';
 
-/** @type {import('eslint').Linter.Config} */
-module.exports = {
+module.exports = defineConfig({
     extends: [
         '@yutengjing/eslint-config-basic',
         'plugin:import/typescript',
@@ -90,4 +90,4 @@ module.exports = {
         '@typescript-eslint/parameter-properties': off,
         '@typescript-eslint/triple-slash-reference': off,
     },
-};
+});

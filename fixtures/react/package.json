@@ -17,6 +17,7 @@
         "@types/react": "^18.0.37",
         "@types/react-dom": "^18.0.11",
         "@vitejs/plugin-react-swc": "^3.0.0",
-        "@yutengjing/eslint-config-react": "workspace:*"
+        "@yutengjing/eslint-config-react": "workspace:*",
+        "eslint-define-config": "^2.1.0"
     }
 }

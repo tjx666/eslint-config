@@ -1,11 +1,12 @@
 // @ts-check
 
+const { defineConfig } = require('eslint-define-config');
+
 const off = 'off';
 const warn = 'warn';
 const error = 'error';
 
-/** @type {import('eslint').Linter.Config} */
-module.exports = {
+module.exports = defineConfig({
     extends: [
         'plugin:import/recommended',
         'plugin:promise/recommended',
@@ -292,4 +293,4 @@ module.exports = {
         // yml
         'yml/no-empty-document': off,
     },
-};
+});
