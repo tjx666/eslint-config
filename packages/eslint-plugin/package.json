@@ -1,21 +1,20 @@
 {
-    "name": "eslint-plugin",
+    "name": "@yutengjing/eslint-plugin",
     "exports": "./index.js",
     "files": [
         "index.js",
         "rules"
     ],
-    "scripts": {
-        "test": "mocha tests --recursive"
-    },
+    "scripts": {},
     "dependencies": {
-        "@typescript-eslint/utils": "^6.7.2",
-        "autocorrect-node": "^2.8.4"
+        "@typescript-eslint/utils": "^6.18.1",
+        "autocorrect-node": "^2.9.0"
     },
     "devDependencies": {
-        "vue-eslint-parser": "^9.3.1"
+        "mocha": "^10.2.0",
+        "vue-eslint-parser": "^9.4.0"
     },
     "peerDependencies": {
-        "eslint": "^8.49.0"
+        "eslint": "^8.56.0"
     }
 }

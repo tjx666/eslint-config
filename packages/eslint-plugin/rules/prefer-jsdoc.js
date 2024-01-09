@@ -35,7 +35,6 @@ const create = (context) => {
             return checkNodes(context, node.body.body);
         },
         /**
-         *
          * @param {TSTypeAliasDeclaration} node
          */
         TSTypeAliasDeclaration(node) {
@@ -84,10 +83,10 @@ module.exports = {
  * @param {Context} ctx
  */
 function checkCommentBeforeNode(ctx, propertyNode) {
-    const commentsBefore = ctx.getCommentsBefore(propertyNode);
+    const sourceCode = ctx.getSourceCode();
+    const commentsBefore = sourceCode.getCommentsBefore(propertyNode);
     if (commentsBefore.length === 0) return;
 
-    const sourceCode = ctx.getSourceCode();
     // 注释和节点之间有空行就不处理
     const textBetween = sourceCode.text.slice(commentsBefore[0].range[1], propertyNode.range[1]);
     let eolCount = 0;
@@ -160,10 +159,10 @@ function checkCommentBeforeNode(ctx, propertyNode) {
  * @param {Context} ctx
  */
 function checkCommentAfterNode(ctx, propertyNode) {
-    const commentsAfter = ctx.getCommentsAfter(propertyNode);
+    const sourceCode = ctx.getSourceCode();
+    const commentsAfter = sourceCode.getCommentsAfter(propertyNode);
     if (commentsAfter.length === 0) return;
 
-    const sourceCode = ctx.getSourceCode();
     // 注释和节点不在同一行不处理
     const textBetween = sourceCode.text.slice(propertyNode.range[1], commentsAfter[0].range[0]);
     if (textBetween.includes('\n')) {

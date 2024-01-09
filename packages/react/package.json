@@ -1,7 +1,7 @@
 {
     "name": "@yutengjing/eslint-config-react",
     "version": "0.4.2",
-    "description": "",
+    "description": "eslint config optimized for react",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -39,13 +39,13 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.42.0"
+        "eslint": "^8.56.0"
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
-        "eslint-plugin-css": "^0.8.0",
-        "eslint-plugin-jsx-a11y": "^6.7.1",
-        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-css": "^0.8.1",
+        "eslint-plugin-jsx-a11y": "^6.8.0",
+        "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0"
     }
 }

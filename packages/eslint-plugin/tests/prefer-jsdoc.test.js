@@ -1,7 +1,7 @@
 'use strict';
 
-const rule = require('../rules/prefer-jsdoc');
 const { ruleTester } = require('./utils');
+const rule = require('../rules/prefer-jsdoc');
 
 const [MESSAGE_ID_DEFAULT, MESSAGE_ID_MANUALLY_FIX] = Object.keys(rule.meta.messages);
 

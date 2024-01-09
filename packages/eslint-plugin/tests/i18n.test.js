@@ -1,7 +1,7 @@
 'use strict';
 
-const rule = require('../rules/i18n');
 const { ruleTester } = require('./utils');
+const rule = require('../rules/i18n');
 
 const errorCode1 = `
 <template>

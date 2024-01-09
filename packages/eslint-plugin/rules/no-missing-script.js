@@ -1,7 +1,7 @@
 'use strict';
 
-const path = require('node:path');
 const fs = require('node:fs');
+const path = require('node:path');
 
 /** @type {RuleCreate} */
 const create = (context) => {
@@ -39,7 +39,6 @@ const create = (context) => {
                 if (missingScripts.length > 0) {
                     context.report({
                         node,
-                        // eslint-disable-next-line eslint-plugin/prefer-message-ids
                         message,
                     });
                 }
