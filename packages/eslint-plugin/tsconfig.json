@@ -1,0 +1,7 @@
+{
+    "extends": "@yutengjing/tsconfig-node-commonjs",
+    "include": ["typings/**/*.d.ts", "**/*.js"],
+    "compilerOptions": {
+        "skipLibCheck": false
+    }
+}

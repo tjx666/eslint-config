@@ -43,7 +43,6 @@ const create = (context) => {
                 if (dep && referencedPackagesPattern.test(dep)) {
                     context.report({
                         node: property.key,
-                        // eslint-disable-next-line eslint-plugin/prefer-message-ids
                         message,
                     });
                 }
