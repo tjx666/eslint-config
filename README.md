@@ -6,14 +6,14 @@
 
 ### Install
 
-eslint is peerDependencies, make sure you had already installed eslint.
+`eslint` is peerDependencies, make sure you had already installed `eslint`
 
 ```shell
-# npm
-npm add -D @yutengjing/eslint-config-typescript
-
 # pnpm
 pnpm add -D @yutengjing/eslint-config-typescript
+
+# npm
+npm add -D @yutengjing/eslint-config-typescript
 
 # yarn
 yarn add -D @yutengjing/eslint-config-typescript
@@ -79,7 +79,7 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
     "html"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   }
 }
 ```
@@ -90,5 +90,6 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 
 ## Related
 
+- [@yutengjing/stylelint-config](https://github.com/tjx666/prettier-config/tree/main)
 - [@yutengjing/prettier-config](https://github.com/tjx666/prettier-config/tree/main)
 - [@yutengjing/tsconfig](https://github.com/tjx666/tsconfig/tree/main)
