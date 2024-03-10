@@ -38,12 +38,12 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^8.56.0"
+        "eslint": "^8.57.0"
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "eslint-define-config": "^2.1.0",
-        "eslint-plugin-css": "^0.8.1",
-        "eslint-plugin-vue": "^9.19.2"
+        "eslint-plugin-css": "^0.9.2",
+        "eslint-plugin-vue": "^9.22.0"
     }
 }

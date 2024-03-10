@@ -50,7 +50,7 @@ module.exports = defineConfig({
         '!.vitepress',
         '!.vscode',
     ],
-    plugins: ['html', 'no-only-tests', 'unused-imports', '@yutengjing'],
+    plugins: ['html', 'no-only-tests', 'unused-imports', 'simple-import-sort', '@yutengjing'],
     settings: {
         'import/resolver': {
             node: { extensions: ['.js', '.mjs', '.cjs'] },
@@ -169,14 +169,32 @@ module.exports = defineConfig({
         'import/no-named-as-default-member': off,
         'import/no-named-as-default': off,
         'import/no-unresolved': off,
-        'import/order': [
+        'import/order': off,
+
+        // import order
+        // https://github.com/lydell/eslint-plugin-simple-import-sort/blob/main/examples/.eslintrc.js#L69
+        'simple-import-sort/imports': [
             error,
             {
-                'alphabetize': { order: 'asc', caseInsensitive: true },
-                'groups': ['builtin', 'external', ['parent', 'sibling', 'index']],
-                'newlines-between': 'always',
+                groups: [
+                    // Side effect imports.
+                    ['^\\u0000'],
+                    // Node.js builtins prefixed with `node:`.
+                    ['^node:'],
+                    // Packages.
+                    // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+                    ['^@?\\w'],
+                    ['^(@|@company|@ui|components|utils|config|vendored-lib)(/.*|$)'],
+                    // Absolute imports and other imports such as Vue-style `@/foo`.
+                    // Anything not matched in another group.
+                    ['^'],
+                    // Relative imports.
+                    // Anything that starts with a dot.
+                    ['^\\.'],
+                ],
             },
         ],
+        'simple-import-sort/exports': error,
 
         // Common
         'camelcase': off,
@@ -265,6 +283,7 @@ module.exports = defineConfig({
         'jsdoc/require-returns-description': off,
         'jsdoc/require-param-description': off,
         'jsdoc/check-line-alignment': [warn, 'never'],
+        'jsdoc/tag-lines': off,
 
         // unicorn
         // use eslint-plugin-regexp instead
