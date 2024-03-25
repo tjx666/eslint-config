@@ -181,10 +181,12 @@ module.exports = defineConfig({
                     ['^\\u0000'],
                     // Node.js builtins prefixed with `node:`.
                     ['^node:'],
+                    // framework
+                    ['^@?astro', '^@?react', '^@?vue'],
                     // Packages.
                     // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
                     ['^@?\\w'],
-                    ['^(@|@company|@ui|components|utils|config|vendored-lib)(/.*|$)'],
+                    ['^@(assets|config|components|content|layouts|pages|styles|utils|)(/.*|$)'],
                     // Absolute imports and other imports such as Vue-style `@/foo`.
                     // Anything not matched in another group.
                     ['^'],
