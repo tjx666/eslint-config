@@ -49,6 +49,7 @@ module.exports = defineConfig({
         '!.github',
         '!.vitepress',
         '!.vscode',
+        '**/.vitepress/cache',
     ],
     plugins: ['html', 'no-only-tests', 'unused-imports', 'simple-import-sort', '@yutengjing'],
     settings: {
