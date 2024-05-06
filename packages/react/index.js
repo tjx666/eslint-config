@@ -6,6 +6,7 @@ const off = 'off';
 const error = 'error';
 
 module.exports = defineConfig({
+    plugins: ['react-refresh'],
     extends: [
         '@yutengjing/eslint-config-typescript',
         'plugin:react/recommended',
@@ -20,6 +21,7 @@ module.exports = defineConfig({
         },
     },
     rules: {
+        'react-refresh/only-export-components': 'warn',
         'react/jsx-no-leaked-render': error,
         'react/react-in-jsx-scope': off,
         'react/self-closing-comp': [

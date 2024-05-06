@@ -2,7 +2,7 @@
     "name": "@yutengjing/eslint-config-monorepo",
     "version": "0.7.0",
     "private": true,
-    "packageManager": "pnpm@8.15.5",
+    "packageManager": "pnpm@9.1.0",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
@@ -36,23 +36,23 @@
         "release": "bumpp -c \"release: v%s\" package.json packages/*/package.json && pnpm -r publish"
     },
     "devDependencies": {
-        "@types/eslint": "^8.56.5",
-        "@types/node": "^20.11.25",
+        "@types/eslint": "^8.56.10",
+        "@types/node": "^20.12.8",
         "@yutengjing/eslint-config-react": "workspace:*",
         "@yutengjing/eslint-config-typescript": "workspace:*",
         "@yutengjing/eslint-config-vue": "workspace:*",
         "@yutengjing/eslint-plugin": "workspace:*",
-        "@yutengjing/prettier-config": "^1.1.2",
+        "@yutengjing/prettier-config": "^1.2.0",
         "@yutengjing/tsconfig-node-commonjs": "^0.0.5",
-        "bumpp": "^9.4.0",
+        "bumpp": "^9.4.1",
         "eslint": "^8.57.0",
-        "eslint-plugin-eslint-plugin": "^5.4.0",
+        "eslint-plugin-eslint-plugin": "^6.1.0",
         "lint-staged": "^15.2.2",
         "prettier": "^3.2.5",
-        "react": "^18.2.0",
+        "react": "^18.3.1",
         "rimraf": "^5.0.5",
-        "simple-git-hooks": "^2.10.0",
-        "typescript": "^5.4.2",
-        "vite": "^5.1.5"
+        "simple-git-hooks": "^2.11.1",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.11"
     }
 }
