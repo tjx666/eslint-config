@@ -296,6 +296,8 @@ module.exports = defineConfig({
         'unicorn/consistent-function-scoping': off,
         'unicorn/filename-case': off,
         'unicorn/import-style': off,
+        // for cross runtime like bun
+        'unicorn/prefer-node-protocol': off,
         // use eslint-comments/no-unlimited-disable instead
         'unicorn/no-abusive-eslint-disable': off,
         'unicorn/no-array-callback-reference': off,

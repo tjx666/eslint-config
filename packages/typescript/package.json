@@ -42,6 +42,7 @@
         "@typescript-eslint/eslint-plugin": "^7.8.0",
         "@typescript-eslint/parser": "^7.8.0",
         "@yutengjing/eslint-config-basic": "workspace:*",
-        "eslint-define-config": "^2.1.0"
+        "eslint-define-config": "^2.1.0",
+        "eslint-import-resolver-typescript": "^3.6.1"
     }
 }

@@ -19,6 +19,9 @@ module.exports = defineConfig({
             node: {
                 extensions: ['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx', '.mts', '.cts', '.d.ts'],
             },
+            typescript: {
+                alwaysTryTypes: true,
+            },
         },
     },
     parserOptions: {
