@@ -18,7 +18,8 @@ const create = (context) => {
     return {
         VariableDeclaration(node) {
             // except for (let item of arr)
-            if (node.parent?.type === 'ForOfStatement') return;
+            if (node.parent?.type === 'ForOfStatement' || node.parent?.type === 'ForInStatement')
+                return;
 
             if (new Set(['const', 'let']).has(node.kind)) {
                 for (const declarator of node.declarations) {
