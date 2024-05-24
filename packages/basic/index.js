@@ -8,19 +8,17 @@ const error = 'error';
 
 module.exports = defineConfig({
     extends: [
-        'plugin:import/recommended',
+        'plugin:import-x/recommended',
         'plugin:promise/recommended',
-        'standard',
         'plugin:regexp/recommended',
         'plugin:eslint-comments/recommended',
         'plugin:jsdoc/recommended',
         'plugin:unicorn/recommended',
-        'plugin:json-schema-validator/recommended',
         'plugin:jsonc/recommended-with-jsonc',
         'plugin:jsonc/prettier',
         'plugin:yml/standard',
         'plugin:yml/prettier',
-        'plugin:markdown/recommended',
+        'plugin:markdown/recommended-legacy',
         'plugin:node-dependencies/recommended',
         'prettier',
     ],
@@ -51,53 +49,30 @@ module.exports = defineConfig({
         '!.vscode',
         '**/.vitepress/cache',
     ],
-    plugins: ['html', 'no-only-tests', 'unused-imports', 'simple-import-sort', '@yutengjing'],
+    plugins: [
+        'eslint-plugin-n',
+        'html',
+        'no-only-tests',
+        'unused-imports',
+        'simple-import-sort',
+        '@yutengjing',
+    ],
     settings: {
-        'import/resolver': {
+        'import-x/resolver': {
             node: { extensions: ['.js', '.mjs', '.cjs'] },
         },
     },
     overrides: [
         {
-            files: ['*.json', '*.jsonc', '*.json5'],
-            parser: 'jsonc-eslint-parser',
-            rules: {
-                'json-schema-validator/no-invalid': [
-                    error,
-                    {
-                        schemas: [
-                            {
-                                fileMatch: ['package.json'],
-                                schema: {
-                                    type: 'object',
-                                    properties: {
-                                        pnpm: {
-                                            type: 'object',
-                                            properties: {
-                                                overrides: {
-                                                    type: 'object',
-                                                    additionalProperties: {
-                                                        type: 'string',
-                                                        pattern: '^[^\\^].+',
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        ],
-                    },
-                ],
-            },
-        },
-        {
             files: ['*.yaml', '*.yml'],
             parser: 'yaml-eslint-parser',
         },
         {
-            files: ['package.json'],
+            files: ['*.json', '*.jsonc', '*.json5'],
             parser: 'jsonc-eslint-parser',
+        },
+        {
+            files: ['package.json'],
             rules: {
                 'jsonc/sort-keys': [
                     error,
@@ -107,6 +82,10 @@ module.exports = defineConfig({
                     },
                     {
                         pathPattern: '^(?:dev|peer|optional|bundled|neverBuilt)?[Dd]ependencies$',
+                        order: { type: 'asc' },
+                    },
+                    {
+                        pathPattern: '^resolutions$',
                         order: { type: 'asc' },
                     },
                     {
@@ -144,7 +123,7 @@ module.exports = defineConfig({
                 '@typescript-eslint/no-use-before-define': off,
                 '@typescript-eslint/no-var-requires': off,
                 '@typescript-eslint/comma-dangle': off,
-                'import/no-unresolved': off,
+                'import-x/no-unresolved': off,
                 'no-alert': off,
                 'no-console': off,
                 'no-restricted-imports': off,
@@ -161,17 +140,26 @@ module.exports = defineConfig({
         '@yutengjing/no-vue-filename-index': error,
         '@yutengjing/prefer-jsdoc': error,
 
+        'n/handle-callback-err': [error, '^(err|error)$'],
+        'n/no-deprecated-api': error,
+        'n/no-exports-assign': error,
+        'n/no-new-require': error,
+        'n/no-path-concat': error,
+        'n/prefer-global/buffer': [error, 'never'],
+        'n/prefer-global/process': [error, 'never'],
+        'n/process-exit-as-throw': error,
+
         // import
-        'import/extensions': [error, 'ignorePackages', { js: 'never', ts: 'never', tsx: 'never' }],
-        'import/namespace': off,
-        'import/newline-after-import': error,
-        'import/no-absolute-path': off,
-        'import/no-duplicates': error,
-        'import/no-mutable-exports': error,
-        'import/no-named-as-default-member': off,
-        'import/no-named-as-default': off,
-        'import/no-unresolved': off,
-        'import/order': off,
+        'import-x/consistent-type-specifier-style': [error, 'prefer-top-level'],
+        'import-x/namespace': off,
+        'import-x/newline-after-import': error,
+        'import-x/no-absolute-path': off,
+        'import-x/no-duplicates': error,
+        'import-x/no-mutable-exports': error,
+        'import-x/no-named-as-default-member': off,
+        'import-x/no-named-as-default': off,
+        'import-x/no-unresolved': error,
+        'import-x/order': off,
 
         // import order
         // https://github.com/lydell/eslint-plugin-simple-import-sort/blob/main/examples/.eslintrc.js#L69
@@ -181,8 +169,13 @@ module.exports = defineConfig({
                 groups: [
                     // Side effect imports.
                     ['^\\u0000'],
-                    // Node.js builtins prefixed with `node:`.
-                    ['^node:'],
+                    // Node.js builtins
+                    [
+                        '^node:',
+                        `^(${require('node:module')
+                            .builtinModules.filter((mod) => mod !== 'constants')
+                            .join('|')})(/.*|$)`,
+                    ],
                     // framework
                     ['^astro', '^react', '^vue'],
                     // Packages.

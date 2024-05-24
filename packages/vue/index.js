@@ -32,7 +32,7 @@ module.exports = defineConfig({
         'prettier',
     ],
     settings: {
-        'import/resolver': {
+        'import-x/resolver': {
             node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts', '.vue'] },
         },
     },

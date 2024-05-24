@@ -15,6 +15,7 @@
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.1.0",
         "@yutengjing/eslint-config-vue": "workspace:*",
-        "eslint-define-config": "^2.1.0"
+        "eslint-define-config": "^2.1.0",
+        "vite": "^2.6.4"
     }
 }

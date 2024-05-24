@@ -10,12 +10,12 @@ const error = 'error';
 module.exports = defineConfig({
     extends: [
         '@yutengjing/eslint-config-basic',
-        'plugin:import/typescript',
+        'plugin:import-x/typescript',
         'plugin:@typescript-eslint/recommended',
         'prettier',
     ],
     settings: {
-        'import/resolver': {
+        'import-x/resolver': {
             node: {
                 extensions: ['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx', '.mts', '.cts', '.d.ts'],
             },
@@ -34,6 +34,8 @@ module.exports = defineConfig({
         {
             files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
             rules: {
+                'import-x/no-unresolved': off,
+                'import-x/default': off,
                 'no-useless-constructor': off,
                 'jsdoc/require-param-type': off,
                 'jsdoc/require-returns-check': off,
@@ -42,7 +44,10 @@ module.exports = defineConfig({
                 // seems will cause error whe lint json if put in rules
                 '@typescript-eslint/consistent-type-imports': [
                     error,
-                    { prefer: 'type-imports', disallowTypeAnnotations: false },
+                    {
+                        prefer: 'type-imports',
+                        fixStyle: 'separate-type-imports',
+                    },
                 ],
             },
         },
