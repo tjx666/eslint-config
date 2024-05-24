@@ -2,7 +2,7 @@
     "name": "@yutengjing/eslint-config-monorepo",
     "version": "1.0.0",
     "private": true,
-    "packageManager": "pnpm@9.1.0",
+    "packageManager": "pnpm@9.1.2",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
