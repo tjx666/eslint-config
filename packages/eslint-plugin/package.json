@@ -18,8 +18,8 @@
         "autocorrect-node": "^2.10.0"
     },
     "devDependencies": {
-        "mocha": "^10.4.0",
-        "vue-eslint-parser": "^9.4.2"
+        "mocha": "^10.6.0",
+        "vue-eslint-parser": "^9.4.3"
     },
     "peerDependencies": {
         "eslint": "^8.57.0"

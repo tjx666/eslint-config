@@ -168,7 +168,7 @@ module.exports = defineConfig({
             {
                 groups: [
                     // Side effect imports.
-                    ['^\\u0000'],
+                    [String.raw`^\u0000`],
                     // Node.js builtins
                     [
                         '^node:',
@@ -180,14 +180,14 @@ module.exports = defineConfig({
                     ['^astro', '^react', '^vue'],
                     // Packages.
                     // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
-                    ['^@?\\w'],
+                    [String.raw`^@?\w`],
                     ['^@(assets|config|components|content|layouts|pages|styles|utils|)(/.*|$)'],
                     // Absolute imports and other imports such as Vue-style `@/foo`.
                     // Anything not matched in another group.
                     ['^'],
                     // Relative imports.
                     // Anything that starts with a dot.
-                    ['^\\.'],
+                    [String.raw`^\.`],
                 ],
             },
         ],
