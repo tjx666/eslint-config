@@ -32,3 +32,16 @@ function App() {
 }
 
 export default App;
+
+// const sx1 = {
+//     '     MuiButton-root   Mui  ': {
+//         color: 'red',
+//     },
+// };
+
+// const sx = {
+//     width: {
+//         sx: 100,
+//         md: 200,
+//     },
+// };
