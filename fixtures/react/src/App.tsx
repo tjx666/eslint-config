@@ -45,3 +45,6 @@ export default App;
 //         md: 200,
 //     },
 // };
+
+// const pre = {};
+// const obj = { ...pre };

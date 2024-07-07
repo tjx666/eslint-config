@@ -6,8 +6,10 @@ const create = (ctx) => {
     return {
         ObjectExpression(node) {
             const isSxResponsiveObjectValue =
-                node.properties.every((property) => property.key.type === 'Identifier') &&
-                node.properties.some((property) => validBreakpoints.has(property.key.name));
+                node.properties.every(
+                    (property) =>
+                        property.type === 'Property' && property.key?.type === 'Identifier',
+                ) && node.properties.some((property) => validBreakpoints.has(property.key.name));
             if (!isSxResponsiveObjectValue) {
                 return;
             }
