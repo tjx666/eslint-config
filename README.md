@@ -84,6 +84,26 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 }
 ```
 
+## @yutengjing/eslint-plugin
+
+Some useful personal eslint rules:
+
+- [@yutengjing/comment-autocorrect](./packages/eslint-plugin/rules/comment-autocorrect.js)
+- [@yutengjing/no-missing-script](./packages/eslint-plugin/rules/no-missing-script.js)
+- [@yutengjing/format-mui-sx-selector.js](./packages/eslint-plugin/rules/format-mui-sx-selector.js)
+- [@yutengjing/no-mui-sx-selector-missing-dot](./packages/eslint-plugin/rules/no-mui-sx-selector-missing-dot.js)
+- [@yutengjing/no-reference-deps](./packages/eslint-plugin/rules/no-reference-deps.js)
+- [@yutengjing/matching-remove-event-listener.js](./packages/eslint-plugin/rules/matching-remove-event-listener.js)
+- [@yutengjing/no-uppercase-module-path](./packages/eslint-plugin/rules/no-uppercase-module-path.js)
+- [@yutengjing/no-declare-implicit-any-var.js](./packages/eslint-plugin/rules/no-declare-implicit-any-var.js)
+- [@yutengjing/no-vue-filename-index](./packages/eslint-plugin/rules/no-vue-filename-index.js)
+- [@yutengjing/no-inline-function-event-listener](./packages/eslint-plugin/rules/no-inline-function-event-listener.js)
+- [@yutengjing/prefer-jsdoc](./packages/eslint-plugin/rules/prefer-jsdoc.js)
+- [@yutengjing/no-invalid-mui-breakpoints.js](./packages/eslint-plugin/rules/no-invalid-mui-breakpoints.js)
+- [@yutengjing/no-missing-remove-event-listener](./packages/eslint-plugin/rules/no-missing-remove-event-listener.js)
+
+check the [source code](./packages/eslint-plugin/rules) or [rule docs](./packages/eslint-plugin/docs/rules/) for details.
+
 ## Thanks
 
 - [@antfu/eslint-config](https://github.com/antfu/eslint-config)
