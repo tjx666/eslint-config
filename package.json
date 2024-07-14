@@ -48,9 +48,9 @@
         "eslint": "^8.57.0",
         "eslint-plugin-eslint-plugin": "^6.2.0",
         "lint-staged": "^15.2.7",
-        "prettier": "^3.3.2",
+        "prettier": "^3.3.3",
         "react": "^18.3.1",
-        "rimraf": "^5.0.8",
+        "rimraf": "^6.0.1",
         "simple-git-hooks": "^2.11.1",
         "typescript": "^5.5.3",
         "vite": "^5.3.3"
