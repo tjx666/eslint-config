@@ -101,6 +101,7 @@ Some useful personal eslint rules:
 - [@yutengjing/prefer-jsdoc](./packages/eslint-plugin/rules/prefer-jsdoc.js)
 - [@yutengjing/no-invalid-mui-breakpoints.js](./packages/eslint-plugin/rules/no-invalid-mui-breakpoints.js)
 - [@yutengjing/no-missing-remove-event-listener](./packages/eslint-plugin/rules/no-missing-remove-event-listener.js)
+- [@yutengjing/no-relative-import](./packages/eslint-plugin/rules/no-relative-import.js)
 
 check the [source code](./packages/eslint-plugin/rules) or [rule docs](./packages/eslint-plugin/docs/rules/) for details.
 
