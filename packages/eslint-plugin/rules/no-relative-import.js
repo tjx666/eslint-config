@@ -79,16 +79,24 @@ function getExpectedPath(
 ) {
     let relativeToBasePath = path.relative(baseUrl, absolutePath);
     const isRelative = importPath.startsWith('.');
+
+    /**
+     * 辅助函数，用于处理路径结尾的 '/*'
+     */
+    const trimWildcard = (p) => (p.endsWith('/*') ? p.replace('/*', '') : p);
+
     if (!onlyAbsoluteImports) {
         if (!isRelative) {
+            // for example:
+            // "@/components/*": ["lib/components/*"],
+            // "@/lib/*": ["lib/*"],
+            //
             // @/lib/components/a.ts -> @/components/a.ts
             if (respectAliasOrder) {
                 let findAlias = false;
                 for (const [prefix, aliasPath] of Object.entries(importPrefixToAlias)) {
-                    const importPrefix = prefix.endsWith('/*') ? prefix.replace('/*', '') : prefix;
-                    const aliasImport = aliasPath.endsWith('/*')
-                        ? aliasPath.replace('/*', '')
-                        : aliasPath;
+                    const importPrefix = trimWildcard(prefix);
+                    const aliasImport = trimWildcard(aliasPath);
                     if (importPath.startsWith(aliasImport)) {
                         relativeToBasePath = importPath.replace(aliasImport, importPrefix);
                         findAlias = true;
@@ -96,17 +104,13 @@ function getExpectedPath(
                     }
                 }
 
-                // prefer use alias instead of absolutePath, for example: lib/a -> @/lib/a
+                // prefer use alias instead of absolutePath
+                // for example: when config alias "@/lib/*": ["lib/*"]
+                // lib/a -> @/lib/a
                 if (!findAlias) {
-                    for (const prefix of Object.keys(importPrefixToAlias)) {
-                        const aliasPath = importPrefixToAlias[prefix];
-                        // assuming they are either a full path or a path ends with /*, which are the two standard cases
-                        const importPrefix = prefix.endsWith('/*')
-                            ? prefix.replace('/*', '')
-                            : prefix;
-                        const aliasImport = aliasPath.endsWith('/*')
-                            ? aliasPath.replace('/*', '')
-                            : aliasPath;
+                    for (const [prefix, aliasPath] of Object.entries(importPrefixToAlias)) {
+                        const importPrefix = trimWildcard(prefix);
+                        const aliasImport = trimWildcard(aliasPath);
                         if (importPath.startsWith(importPrefix)) {
                             return `${aliasImport}${importPath.slice(importPrefix.length)}`;
                         }
@@ -118,11 +122,10 @@ function getExpectedPath(
             }
         }
 
-        for (const prefix of Object.keys(importPrefixToAlias)) {
-            const aliasPath = importPrefixToAlias[prefix];
+        for (const [prefix, aliasPath] of Object.entries(importPrefixToAlias)) {
             // assuming they are either a full path or a path ends with /*, which are the two standard cases
-            const importPrefix = prefix.endsWith('/*') ? prefix.replace('/*', '') : prefix;
-            const aliasImport = aliasPath.endsWith('/*') ? aliasPath.replace('/*', '') : aliasPath;
+            const importPrefix = trimWildcard(prefix);
+            const aliasImport = trimWildcard(aliasPath);
             if (relativeToBasePath.startsWith(importPrefix)) {
                 return `${aliasImport}${relativeToBasePath.slice(importPrefix.length)}`;
             }
@@ -133,7 +136,6 @@ function getExpectedPath(
         return relativeToBasePath;
     }
 }
-
 const optionsSchema = {
     type: 'object',
     properties: {
@@ -149,15 +151,18 @@ const optionsSchema = {
     },
 };
 
-function generateRule(context, errorMessagePrefix) {
+let cachedBaseDir, cachedBaseUrl, cachedPaths, cachedImportPrefixToAlias;
+function generateRule(context) {
     const options = context.options[0] || {};
     const onlyPathAliases = options.onlyPathAliases || false;
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
 
-    const baseDir = findDirWithFile('package.json');
-    const [baseUrl, paths] = getBaseUrlAndPaths(baseDir);
-    const importPrefixToAlias = getImportPrefixToAlias(paths);
+    if (!cachedBaseDir) {
+        cachedBaseDir = findDirWithFile('package.json');
+        [cachedBaseUrl, cachedPaths] = getBaseUrlAndPaths(cachedBaseDir);
+        cachedImportPrefixToAlias = getImportPrefixToAlias(cachedPaths);
+    }
 
     return {
         ImportDeclaration(node) {
@@ -168,17 +173,22 @@ function generateRule(context, errorMessagePrefix) {
             const expectedPath = getExpectedPath(
                 importPath,
                 absolutePath,
-                baseUrl,
-                importPrefixToAlias,
+                cachedBaseUrl,
+                cachedImportPrefixToAlias,
                 onlyPathAliases,
                 onlyAbsoluteImports,
                 respectAliasOrder,
             );
 
             if (expectedPath && importPath !== expectedPath) {
+                const isRelative = importPath.startsWith('.');
+                const errorMessage = isRelative
+                    ? `Relative imports are not allowed. Please use '${expectedPath}' instead of '${importPath}'.`
+                    : `Please prefer using alias '${expectedPath}' instead of '${importPath}'.`;
+
                 context.report({
                     node,
-                    message: `${errorMessagePrefix}. Use \`${expectedPath}\` instead of \`${importPath}\`.`,
+                    message: errorMessage,
                     fix(fixer) {
                         return fixer.replaceText(node.source, `'${expectedPath}'`);
                     },
@@ -194,6 +204,6 @@ module.exports = {
         schema: [optionsSchema],
     },
     create(context) {
-        return generateRule(context, 'Relative imports are not allowed');
+        return generateRule(context);
     },
 };
