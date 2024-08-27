@@ -15,18 +15,20 @@ function has(map, path) {
     return true;
 }
 
-function findDirWithFile(filename) {
-    let dir = path.resolve(filename);
+function findDirWithFile(filename, startDir) {
+    let dir = path.resolve(startDir);
+    const root = path.parse(dir).root;
 
-    do {
+    while (dir !== root) {
+        if (fs.existsSync(path.join(dir, filename))) {
+            return dir;
+        }
         dir = path.dirname(dir);
-    } while (!fs.existsSync(path.join(dir, filename)) && dir !== '/');
-
-    if (!fs.existsSync(path.join(dir, filename))) {
-        return;
     }
 
-    return dir;
+    if (fs.existsSync(path.join(root, filename))) {
+        return root;
+    }
 }
 
 function getImportPrefixToAlias(paths) {
@@ -152,14 +154,15 @@ const optionsSchema = {
 };
 
 let cachedBaseDir, cachedBaseUrl, cachedPaths, cachedImportPrefixToAlias;
-function generateRule(context) {
+function create(context) {
     const options = context.options[0] || {};
     const onlyPathAliases = options.onlyPathAliases || false;
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
 
     if (!cachedBaseDir) {
-        cachedBaseDir = findDirWithFile('package.json');
+        const filename = context.getFilename();
+        cachedBaseDir = findDirWithFile('package.json', path.dirname(filename));
         [cachedBaseUrl, cachedPaths] = getBaseUrlAndPaths(cachedBaseDir);
         cachedImportPrefixToAlias = getImportPrefixToAlias(cachedPaths);
     }
@@ -203,7 +206,5 @@ module.exports = {
         fixable: true,
         schema: [optionsSchema],
     },
-    create(context) {
-        return generateRule(context);
-    },
+    create,
 };
