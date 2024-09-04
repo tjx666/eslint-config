@@ -78,7 +78,6 @@ function getExpectedPath(
     onlyPathAliases,
     onlyAbsoluteImports,
     respectAliasOrder,
-    projectModuleRegexp,
 ) {
     let relativeToBasePath = path.relative(baseUrl, absolutePath);
     const isRelative = importPath.startsWith('.');
@@ -88,7 +87,7 @@ function getExpectedPath(
      */
     const trimWildcard = (p) => (p.endsWith('/*') ? p.replace('/*', '') : p);
 
-    if (!onlyAbsoluteImports && new RegExp(projectModuleRegexp).test(importPath)) {
+    if (!onlyAbsoluteImports) {
         if (!isRelative) {
             // for example:
             // "@/components/*": ["lib/components/*"],
@@ -114,7 +113,8 @@ function getExpectedPath(
                     for (const [prefix, aliasPath] of Object.entries(importPrefixToAlias)) {
                         const importPrefix = trimWildcard(prefix);
                         const aliasImport = trimWildcard(aliasPath);
-                        if (importPath.startsWith(importPrefix)) {
+                        // consider: importPath: typesaurus, alias: @/types: types/*
+                        if (importPath.startsWith(`${importPrefix}/`)) {
                             return `${aliasImport}${importPath.slice(importPrefix.length)}`;
                         }
                     }
@@ -151,9 +151,6 @@ const optionsSchema = {
         respectAliasOrder: {
             type: 'boolean',
         },
-        projectModuleRegexp: {
-            type: 'string',
-        },
     },
 };
 
@@ -163,7 +160,7 @@ function create(context) {
     const onlyPathAliases = options.onlyPathAliases || false;
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
-    const projectModuleRegexp = options.projectModuleRegexp || '^(?:@/?|~)';
+
     if (!cachedBaseDir) {
         const filename = context.getFilename();
         cachedBaseDir = findDirWithFile('package.json', path.dirname(filename));
@@ -185,7 +182,6 @@ function create(context) {
                 onlyPathAliases,
                 onlyAbsoluteImports,
                 respectAliasOrder,
-                projectModuleRegexp,
             );
 
             if (expectedPath && importPath !== expectedPath) {
