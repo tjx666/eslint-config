@@ -78,6 +78,7 @@ function getExpectedPath(
     onlyPathAliases,
     onlyAbsoluteImports,
     respectAliasOrder,
+    projectModuleRegexp,
 ) {
     let relativeToBasePath = path.relative(baseUrl, absolutePath);
     const isRelative = importPath.startsWith('.');
@@ -87,7 +88,7 @@ function getExpectedPath(
      */
     const trimWildcard = (p) => (p.endsWith('/*') ? p.replace('/*', '') : p);
 
-    if (!onlyAbsoluteImports) {
+    if (!onlyAbsoluteImports && new RegExp(projectModuleRegexp).test(importPath)) {
         if (!isRelative) {
             // for example:
             // "@/components/*": ["lib/components/*"],
@@ -150,6 +151,9 @@ const optionsSchema = {
         respectAliasOrder: {
             type: 'boolean',
         },
+        projectModuleRegexp: {
+            type: 'string',
+        },
     },
 };
 
@@ -159,7 +163,7 @@ function create(context) {
     const onlyPathAliases = options.onlyPathAliases || false;
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
-
+    const projectModuleRegexp = options.projectModuleRegexp || '^(?:@/?|~)';
     if (!cachedBaseDir) {
         const filename = context.getFilename();
         cachedBaseDir = findDirWithFile('package.json', path.dirname(filename));
@@ -181,6 +185,7 @@ function create(context) {
                 onlyPathAliases,
                 onlyAbsoluteImports,
                 respectAliasOrder,
+                projectModuleRegexp,
             );
 
             if (expectedPath && importPath !== expectedPath) {
