@@ -35,7 +35,9 @@ function getImportPrefixToAlias(paths) {
     const reversed = {};
     for (const key of Object.keys(paths)) {
         for (const path of paths[key]) {
-            reversed[path] = key;
+            // ./components/* -> components/*
+            const normalizedPath = path.startsWith('./') ? path.slice(2) : path;
+            reversed[normalizedPath] = key;
         }
     }
     return reversed;
