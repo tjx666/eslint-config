@@ -156,19 +156,31 @@ const optionsSchema = {
     },
 };
 
-let cachedBaseDir, cachedBaseUrl, cachedPaths, cachedImportPrefixToAlias;
+const configCache = new Map();
+
 function create(context) {
     const options = context.options[0] || {};
     const onlyPathAliases = options.onlyPathAliases || false;
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
 
-    if (!cachedBaseDir) {
-        const filename = context.getFilename();
-        cachedBaseDir = findDirWithFile('package.json', path.dirname(filename));
-        [cachedBaseUrl, cachedPaths] = getBaseUrlAndPaths(cachedBaseDir);
-        cachedImportPrefixToAlias = getImportPrefixToAlias(cachedPaths);
+    const filename = context.getFilename();
+    const baseDir = findDirWithFile('package.json', path.dirname(filename));
+
+    if (!baseDir) {
+        return {};
     }
+
+    if (!configCache.has(baseDir)) {
+        const [baseUrl, paths] = getBaseUrlAndPaths(baseDir);
+        configCache.set(baseDir, {
+            baseUrl,
+            paths,
+            importPrefixToAlias: getImportPrefixToAlias(paths),
+        });
+    }
+
+    const config = configCache.get(baseDir);
 
     return {
         ImportDeclaration(node) {
@@ -179,8 +191,8 @@ function create(context) {
             const expectedPath = getExpectedPath(
                 importPath,
                 absolutePath,
-                cachedBaseUrl,
-                cachedImportPrefixToAlias,
+                config.baseUrl,
+                config.importPrefixToAlias,
                 onlyPathAliases,
                 onlyAbsoluteImports,
                 respectAliasOrder,
