@@ -69,11 +69,6 @@ module.exports = defineConfig({
         ],
         '@typescript-eslint/no-dupe-class-members': error,
         '@typescript-eslint/no-loss-of-precision': error,
-        '@typescript-eslint/lines-between-class-members': [
-            error,
-            'always',
-            { exceptAfterSingleLine: true },
-        ],
 
         // off
         '@typescript-eslint/ban-ts-ignore': off,
