@@ -13,6 +13,7 @@ module.exports = defineConfig({
         'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:css/recommended',
+        'plugin:@eslint-react/recommended-legacy',
         'prettier',
     ],
     settings: {
@@ -31,5 +32,9 @@ module.exports = defineConfig({
                 html: false,
             },
         ],
+
+        '@eslint-react/naming-convention/component-name': [error, 'PascalCase'],
+        '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': off,
+        '@eslint-react/dom/no-missing-iframe-sandbox': off,
     },
 });
