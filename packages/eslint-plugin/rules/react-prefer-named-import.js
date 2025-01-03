@@ -113,49 +113,38 @@ const create = (context) => {
                     messageId: MESSAGE_ID_DEFAULT,
                     *fix(fixer) {
                         // 1. 收集所有需要处理的节点
-                        const memberExpressions = [];
-                        const qualifiedNames = [];
+                        const nodesToFix = [];
                         traverseNode(sourceCode.ast, (node) => {
-                            if (node.type === 'MemberExpression') {
-                                memberExpressions.push(node);
-                            } else if (node.type === 'TSQualifiedName') {
-                                qualifiedNames.push(node);
+                            if (
+                                (node.type === 'MemberExpression' &&
+                                    node.object.type === 'Identifier' &&
+                                    node.object.name === 'React' &&
+                                    node.property.type === 'Identifier') ||
+                                (node.type === 'TSQualifiedName' &&
+                                    node.left.type === 'Identifier' &&
+                                    node.left.name === 'React' &&
+                                    node.right.type === 'Identifier')
+                            ) {
+                                nodesToFix.push(node);
                             }
                         });
 
-                        // 2. 替换所有 React.xxx 的值使用
-                        for (const node of memberExpressions) {
-                            if (
-                                node.object.type === 'Identifier' &&
-                                node.object.name === 'React' &&
-                                node.property.type === 'Identifier'
-                            ) {
+                        // 2. 按照位置从后向前排序，这样可以避免修复重叠
+                        nodesToFix.sort((a, b) => b.range[0] - a.range[0]);
+
+                        // 3. 替换所有 React.xxx 的使用
+                        for (const node of nodesToFix) {
+                            if (node.type === 'MemberExpression') {
                                 // 检查是否在类型上下文中
                                 let current = node;
-                                let isTypeContext = false;
                                 while (current.parent) {
                                     if (current.parent.type.startsWith('TS')) {
-                                        isTypeContext = true;
                                         break;
                                     }
                                     current = current.parent;
                                 }
-                                // 替换所有引用
-                                if (isTypeContext) {
-                                    yield fixer.replaceText(node, node.property.name);
-                                } else {
-                                    yield fixer.replaceText(node, node.property.name);
-                                }
-                            }
-                        }
-
-                        // 3. 替换所有类型引用
-                        for (const node of qualifiedNames) {
-                            if (
-                                node.left.type === 'Identifier' &&
-                                node.left.name === 'React' &&
-                                node.right.type === 'Identifier'
-                            ) {
+                                yield fixer.replaceText(node, node.property.name);
+                            } else if (node.type === 'TSQualifiedName') {
                                 yield fixer.replaceText(node, node.right.name);
                             }
                         }
