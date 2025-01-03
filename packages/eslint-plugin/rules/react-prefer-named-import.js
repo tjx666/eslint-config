@@ -53,6 +53,51 @@ const create = (context) => {
         }
     };
 
+    /**
+     * 辅助函数：检查节点是否在类型上下文中
+     *
+     * @param {import('eslint').Rule.Node} node - AST 节点
+     * @returns {boolean} 是否在类型上下文中
+     */
+    const isInTypeContext = (node) => {
+        let current = node;
+        while (current.parent) {
+            if (current.parent.type.startsWith('TS')) {
+                return true;
+            }
+            current = current.parent;
+        }
+        return false;
+    };
+
+    /**
+     * 辅助函数：处理 React API 引用
+     *
+     * @param {import('eslint').Rule.Node} node - AST 节点
+     * @param {Set<string>} apis - React API 集合
+     * @param {Set<string>} typeRefs - React 类型引用集合
+     */
+    const handleReactReference = (node, apis, typeRefs) => {
+        const name = node.type === 'MemberExpression' ? node.property.name : node.right.name;
+        if (isInTypeContext(node)) {
+            typeRefs.add(name);
+        } else {
+            apis.add(name);
+        }
+    };
+
+    /**
+     * 辅助函数：生成导入语句
+     *
+     * @param {Set<string>} imports - 导入项集合
+     * @param {boolean} hasSemicolon - 是否需要分号
+     * @returns {string} 导入语句
+     */
+    const generateImportStatement = (imports, hasSemicolon) => {
+        const sortedImports = Array.from(imports).sort((a, b) => a.localeCompare(b));
+        return `import { ${sortedImports.join(', ')} } from 'react'${hasSemicolon ? ';' : ''}`;
+    };
+
     return {
         // 检测 namespace import 和 default import
         'ImportDeclaration': function (node) {
@@ -75,17 +120,7 @@ const create = (context) => {
                 node.object.name === 'React' &&
                 node.property.type === 'Identifier'
             ) {
-                // 检查是否在类型上下文中
-                let current = node;
-                while (current.parent) {
-                    if (current.parent.type.startsWith('TS')) {
-                        reactTypeRefs.add(node.property.name);
-                        return;
-                    }
-                    current = current.parent;
-                }
-                // 不在类型上下文中，则为值的使用
-                reactApis.add(node.property.name);
+                handleReactReference(node, reactApis, reactTypeRefs);
             }
         },
 
@@ -96,16 +131,13 @@ const create = (context) => {
                 node.left.name === 'React' &&
                 node.right.type === 'Identifier'
             ) {
-                reactTypeRefs.add(node.right.name);
+                handleReactReference(node, reactApis, reactTypeRefs);
             }
         },
 
         // 提供修复
         'Program:exit': function () {
-            // 如果只有类型引用，不需要修复
-            if (reactApis.size === 0) {
-                return;
-            }
+            if (reactApis.size === 0 && reactTypeRefs.size === 0) return;
 
             if (reactImportNode) {
                 context.report({
@@ -113,8 +145,19 @@ const create = (context) => {
                     messageId: MESSAGE_ID_DEFAULT,
                     *fix(fixer) {
                         // 1. 收集所有需要处理的节点
-                        const nodesToFix = [];
+                        const memberExpressions = [];
+                        const qualifiedNames = [];
                         traverseNode(sourceCode.ast, (node) => {
+                            if (node.type === 'MemberExpression') {
+                                memberExpressions.push(node);
+                            } else if (node.type === 'TSQualifiedName') {
+                                qualifiedNames.push(node);
+                            }
+                        });
+
+                        // 2. 替换所有 React.xxx 的引用
+                        const replaceNodes = [...memberExpressions, ...qualifiedNames];
+                        for (const node of replaceNodes) {
                             if (
                                 (node.type === 'MemberExpression' &&
                                     node.object.type === 'Identifier' &&
@@ -125,31 +168,15 @@ const create = (context) => {
                                     node.left.name === 'React' &&
                                     node.right.type === 'Identifier')
                             ) {
-                                nodesToFix.push(node);
-                            }
-                        });
-
-                        // 2. 按照位置从后向前排序，这样可以避免修复重叠
-                        nodesToFix.sort((a, b) => b.range[0] - a.range[0]);
-
-                        // 3. 替换所有 React.xxx 的使用
-                        for (const node of nodesToFix) {
-                            if (node.type === 'MemberExpression') {
-                                // 检查是否在类型上下文中
-                                let current = node;
-                                while (current.parent) {
-                                    if (current.parent.type.startsWith('TS')) {
-                                        break;
-                                    }
-                                    current = current.parent;
-                                }
-                                yield fixer.replaceText(node, node.property.name);
-                            } else if (node.type === 'TSQualifiedName') {
-                                yield fixer.replaceText(node, node.right.name);
+                                const name =
+                                    node.type === 'MemberExpression'
+                                        ? node.property.name
+                                        : node.right.name;
+                                yield fixer.replaceText(node, name);
                             }
                         }
 
-                        // 4. 合并所有 React 导入
+                        // 3. 合并所有 React 导入
                         const existingImports = getExistingNamedImports();
                         const allImports = new Set([
                             ...existingImports,
@@ -157,20 +184,18 @@ const create = (context) => {
                             ...reactTypeRefs,
                         ]);
 
-                        // 5. 生成新的导入语句
-                        const newImports = [];
+                        // 4. 生成新的导入语句
                         const hasSemicolon = sourceCode.getText(reactImportNode).endsWith(';');
-                        // 按字母序排序
-                        const sortedImports = Array.from(allImports).sort((a, b) =>
-                            a.localeCompare(b),
-                        );
-                        newImports.push(
-                            `import { ${sortedImports.join(', ')} } from 'react'${hasSemicolon ? ';' : ''}`,
-                        );
+                        const newImport = generateImportStatement(allImports, hasSemicolon);
 
-                        // 6. 如果有已存在的具名导入，需要移除它并替换
-                        if (existingNamedImports) {
-                            // 删除 namespace/default import 及其后面的空行
+                        // 5. 处理导入语句替换
+                        const replacedNode = existingNamedImports || reactImportNode;
+                        yield fixer.replaceText(replacedNode, newImport);
+                        if (
+                            existingNamedImports &&
+                            reactImportNode &&
+                            existingNamedImports !== reactImportNode
+                        ) {
                             const afterReactImport = sourceCode.text.slice(
                                 reactImportNode.range[1],
                             );
@@ -179,13 +204,7 @@ const create = (context) => {
                                 reactImportNode.range[0],
                                 reactImportNode.range[1] + (match ? match[0].length : 0),
                             ]);
-                            // 替换原有的 named import
-                            yield fixer.replaceText(existingNamedImports, newImports[0]);
-                            return;
                         }
-
-                        // 7. 替换导入语句
-                        yield fixer.replaceText(reactImportNode, newImports[0]);
                     },
                 });
             }

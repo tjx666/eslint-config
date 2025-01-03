@@ -197,6 +197,42 @@ function App() {
     return <div ref={ref}>{count}</div>;
 }`;
 
+// 混合使用默认导入和具名导入的情况
+const errorCode10 = `
+import React, { useEffect, useRef } from 'react';
+
+function Component() {
+    const [state, setState] = React.useState(0);
+    const ref = useRef(null);
+    useEffect(() => {}, []);
+    return <div ref={ref}>{state}</div>;
+}`;
+
+const fixedCode10 = `
+import { useEffect, useRef, useState } from 'react';
+
+function Component() {
+    const [state, setState] = useState(0);
+    const ref = useRef(null);
+    useEffect(() => {}, []);
+    return <div ref={ref}>{state}</div>;
+}`;
+
+// 只有类型引用的情况
+const errorCode11 = `
+import * as React from 'react';
+
+type Props = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>;
+type Ref = React.RefObject<React.ElementRef<typeof AccordionPrimitive.Item>>;
+`;
+
+const fixedCode11 = `
+import { ComponentPropsWithoutRef, ElementRef, RefObject } from 'react';
+
+type Props = ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>;
+type Ref = RefObject<ElementRef<typeof AccordionPrimitive.Item>>;
+`;
+
 ruleTester.run('react-prefer-named-import', rule, {
     valid: [
         {
@@ -213,14 +249,6 @@ function App() {
     useEffect(() => {}, []);
     return createElement('div', null, count);
 }`,
-        },
-        {
-            // 纯类型使用是合法的
-            code: `
-import * as React from 'react';
-type Props = React.ComponentProps<'div'>;
-interface State extends React.ComponentState {}`,
-            parser,
         },
     ],
     invalid: [
@@ -269,6 +297,17 @@ interface State extends React.ComponentState {}`,
             code: errorCode9,
             errors: [{ messageId: MESSAGE_ID_DEFAULT }],
             output: fixedCode9,
+            parser,
+        },
+        {
+            code: errorCode10,
+            errors: [{ messageId: MESSAGE_ID_DEFAULT }],
+            output: fixedCode10,
+        },
+        {
+            code: errorCode11,
+            errors: [{ messageId: MESSAGE_ID_DEFAULT }],
+            output: fixedCode11,
             parser,
         },
     ],
