@@ -13,7 +13,7 @@ const config = {
         ecmaFeatures: {
             globalReturn: false,
             impliedStrict: false,
-            jsx: false,
+            jsx: true,
         },
     },
 };

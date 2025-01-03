@@ -15,7 +15,8 @@
             "@yutengjing/eslint-config-typescript"
         ],
         "ignorePatterns": [
-            "fixtures"
+            "fixtures",
+            "packages/eslint-plugin/docs/rules/**/*.md"
         ],
         "rules": {
             "jsdoc/no-undefined-types": 0,

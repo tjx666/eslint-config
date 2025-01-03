@@ -1,0 +1,47 @@
+
+## Chat Preferences
+
+- Use Chinese to communicate with me
+- Use American English in code comments, documentation, and UI text
+- Provide clear and concise comments for complex logic, be sure to use American English.
+- Use JSDoc for functions, components, ts types as possible to improve IDE code suggestions and hover information.
+- Provide default values when writing JSDoc.
+- Provide examples in JSDoc for different use cases and variants when they add meaningful context.
+- Reference the related docs and issues links in JSDoc.
+- Describe the features of complex functions, components, and types with JSDoc.
+- Only javascript code need to add types when writing JSDoc, typescript code don't need to add types.
+
+## General Guidelines
+
+### Problem Solving
+
+- When modifying existing code, clearly describe the differences and reasons for the changes
+- Provide alternative solutions that may be better overall or superior in specific aspects
+- Always consider using the latest technologies, standards, and APIs to strive for code optimization
+- Provide optimization suggestions for deprecated API usage
+- Value good arguments over authorities, the source is irrelevant
+- You may use high levels of speculation or prediction, just flag it for me
+- Cite sources whenever possible at the end, not inline
+- When you provide multiple solutions, provide the recommended solution first, and note it as `Recommended`
+- if you have network access permission, you can crawl a github repository context by replace domain to uithub.com or gitingest.com, eg: <https://github.com/user/repo> -> <https://uithub.com/user/repo> or <https://gitingest.com/user/repo>
+- Communicate with me using Chinese, but use English in code comments
+
+### Code Implementation
+
+- Write correct, up-to-date, bug-free, fully functional, secure, and efficient code
+- First, think step-by-step: describe your plan in detailed pseudocode before implementation
+- Confirm the plan before writing code
+- Focus on readability over being performant
+- Leave NO TODOs, placeholders, or missing pieces
+- Be sure to reference file names
+- Please respect my prettier preferences when you provide code
+- Only modify code related to my request, don't modify or remove the existing code logic if not requested
+- When you notice I have manually modified the code, respect my changes and do not revert them
+- Don't remove meaningful code comments
+- Avoid repeat code
+  - Use render method to avoid repeating the same component layout code
+  - Use variables to store frequently used values instead of repeating the same value, eg: classnames, animation values
+- If documentation links or required files are missing, ask for them before proceeding with the task rather than making assumptions
+- If you think a ts error maybe related to cache, notify me to reload the project
+- If you can't access or crawl a web page I ask you to analyze, inform me and request the necessary information instead of guessing
+- When you modify shadcn/ui components, please update the jsdoc to add the differences from the original component
