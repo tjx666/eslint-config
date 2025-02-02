@@ -186,6 +186,9 @@ function create(context) {
      * 提取公共检查逻辑到独立函数
      */
     function checkAndReport(node) {
+        // 如果没有 source（直接导出），跳过检查，例如 export function a() {}
+        if (!node.source) return;
+
         const importPath = node.source.value;
         const filename = context.getFilename();
 
