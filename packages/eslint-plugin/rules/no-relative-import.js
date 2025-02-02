@@ -182,37 +182,44 @@ function create(context) {
 
     const config = configCache.get(baseDir);
 
+    /**
+     * 提取公共检查逻辑到独立函数
+     */
+    function checkAndReport(node) {
+        const importPath = node.source.value;
+        const filename = context.getFilename();
+
+        const absolutePath = path.normalize(path.join(path.dirname(filename), importPath));
+        const expectedPath = getExpectedPath(
+            importPath,
+            absolutePath,
+            config.baseUrl,
+            config.importPrefixToAlias,
+            onlyPathAliases,
+            onlyAbsoluteImports,
+            respectAliasOrder,
+        );
+
+        if (expectedPath && importPath !== expectedPath) {
+            const isRelative = importPath.startsWith('.');
+            const errorMessage = isRelative
+                ? `Relative imports are not allowed. Please use '${expectedPath}' instead of '${importPath}'.`
+                : `Please prefer using alias '${expectedPath}' instead of '${importPath}'.`;
+
+            context.report({
+                node: node.source,
+                message: errorMessage,
+                fix(fixer) {
+                    return fixer.replaceText(node.source, `'${expectedPath}'`);
+                },
+            });
+        }
+    }
+
     return {
-        ImportDeclaration(node) {
-            const importPath = node.source.value;
-            const filename = context.getFilename();
-
-            const absolutePath = path.normalize(path.join(path.dirname(filename), importPath));
-            const expectedPath = getExpectedPath(
-                importPath,
-                absolutePath,
-                config.baseUrl,
-                config.importPrefixToAlias,
-                onlyPathAliases,
-                onlyAbsoluteImports,
-                respectAliasOrder,
-            );
-
-            if (expectedPath && importPath !== expectedPath) {
-                const isRelative = importPath.startsWith('.');
-                const errorMessage = isRelative
-                    ? `Relative imports are not allowed. Please use '${expectedPath}' instead of '${importPath}'.`
-                    : `Please prefer using alias '${expectedPath}' instead of '${importPath}'.`;
-
-                context.report({
-                    node,
-                    message: errorMessage,
-                    fix(fixer) {
-                        return fixer.replaceText(node.source, `'${expectedPath}'`);
-                    },
-                });
-            }
-        },
+        ImportDeclaration: checkAndReport,
+        ExportNamedDeclaration: checkAndReport,
+        ExportAllDeclaration: checkAndReport,
     };
 }
 

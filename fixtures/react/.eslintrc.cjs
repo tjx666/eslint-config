@@ -5,5 +5,13 @@ module.exports = defineConfig({
     extends: '@yutengjing/eslint-config-react',
     rules: {
         '@typescript-eslint/no-require-imports': 0,
+
+        '@yutengjing/no-relative-import': [
+            'error',
+            {
+                respectAliasOrder: true,
+                onlyPathAliases: true,
+            },
+        ],
     },
 });

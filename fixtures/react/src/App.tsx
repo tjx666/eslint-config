@@ -1,13 +1,17 @@
-import './App.css';
+import '@/App.css';
 
 import { useState } from 'react';
 
-import viteLogo from '/vite.svg';
+import reactLogo from '@/assets/react.svg';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
-import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 
 function App() {
     const [count, setCount] = useState(0);
+    const size = useWindowSize();
+
+    console.log(size);
 
     return (
         <>
