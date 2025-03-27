@@ -4,7 +4,7 @@ const { ruleTester } = require('./utils');
 const rule = require('../rules/react-prefer-named-import');
 
 const MESSAGE_ID_DEFAULT = 'preferNamedImport';
-const parser = require.resolve('@typescript-eslint/parser');
+const parser = require('@typescript-eslint/parser');
 
 // 基本用例：单个 API 使用（namespace import）
 const errorCode1 = `
@@ -291,24 +291,33 @@ function App() {
             code: errorCode8,
             errors: [{ messageId: MESSAGE_ID_DEFAULT }],
             output: fixedCode8,
-            parser,
+            languageOptions: {
+                parser,
+            },
         },
         {
             code: errorCode9,
             errors: [{ messageId: MESSAGE_ID_DEFAULT }],
             output: fixedCode9,
-            parser,
+            languageOptions: {
+                parser,
+            },
         },
         {
             code: errorCode10,
             errors: [{ messageId: MESSAGE_ID_DEFAULT }],
             output: fixedCode10,
+            languageOptions: {
+                parser,
+            },
         },
         {
             code: errorCode11,
             errors: [{ messageId: MESSAGE_ID_DEFAULT }],
             output: fixedCode11,
-            parser,
+            languageOptions: {
+                parser,
+            },
         },
     ],
 });

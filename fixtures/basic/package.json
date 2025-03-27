@@ -1,0 +1,17 @@
+{
+    "name": "basic",
+    "type": "module",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "eslint ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@yutengjing/eslint-config-basic": "workspace:*",
+        "eslint": "^9.23.0"
+    }
+}

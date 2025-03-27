@@ -30,6 +30,7 @@
         "registry": "https://registry.npmjs.org/",
         "access": "public"
     },
+    "type": "module",
     "main": "index.js",
     "files": [
         "index.js"
@@ -39,10 +40,8 @@
         "typescript": "^5.8.2"
     },
     "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^8.28.0",
-        "@typescript-eslint/parser": "^8.28.0",
+        "typescript-eslint": "^8.28.0",
         "@yutengjing/eslint-config-basic": "workspace:*",
-        "eslint-define-config": "^2.1.0",
         "eslint-import-resolver-typescript": "^4.2.5"
     }
 }

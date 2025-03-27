@@ -1,40 +1,46 @@
-// @ts-check
+import eslintConfigTypescript from '@yutengjing/eslint-config-typescript';
+import tseslint from 'typescript-eslint';
+import * as cssPlugin from 'eslint-plugin-css';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import eslintReact from '@eslint-react/eslint-plugin';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
-const { defineConfig } = require('eslint-define-config');
+export default tseslint.config(
+    eslintConfigTypescript,
+    cssPlugin.configs['flat/recommended'],
+    jsxA11y.flatConfigs.recommended,
+    reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
+    reactPlugin.configs.flat['jsx-runtime'], // Add this if you are using React 17+
+    reactHooks.configs['recommended-latest'],
+    reactRefresh.configs.recommended,
+    eslintReact.configs['recommended-typescript'],
 
-const off = 'off';
-const error = 'error';
+    {
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
+        rules: {
+            'react-refresh/only-export-components': 'warn',
+            'react/jsx-no-leaked-render': 'error',
+            'react/react-in-jsx-scope': 'off',
+            'react/self-closing-comp': [
+                'error',
+                {
+                    component: true,
+                    html: false,
+                },
+            ],
 
-module.exports = defineConfig({
-    plugins: ['react-refresh'],
-    extends: [
-        '@yutengjing/eslint-config-typescript',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:jsx-a11y/recommended',
-        'plugin:css/recommended',
-        'plugin:@eslint-react/recommended-legacy',
-        'prettier',
-    ],
-    settings: {
-        react: {
-            version: 'detect',
+            '@eslint-react/naming-convention/component-name': ['error', 'PascalCase'],
+            '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 'off',
+            '@eslint-react/dom/no-missing-iframe-sandbox': 'off',
         },
     },
-    rules: {
-        'react-refresh/only-export-components': 'warn',
-        'react/jsx-no-leaked-render': error,
-        'react/react-in-jsx-scope': off,
-        'react/self-closing-comp': [
-            error,
-            {
-                component: true,
-                html: false,
-            },
-        ],
 
-        '@eslint-react/naming-convention/component-name': [error, 'PascalCase'],
-        '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': off,
-        '@eslint-react/dom/no-missing-iframe-sandbox': off,
-    },
-});
+    eslintConfigPrettier,
+);

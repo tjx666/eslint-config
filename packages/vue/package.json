@@ -33,6 +33,7 @@
         "registry": "https://registry.npmjs.org/",
         "access": "public"
     },
+    "type": "module",
     "main": "index.js",
     "files": [
         "index.js"
@@ -42,8 +43,8 @@
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
-        "eslint-define-config": "^2.1.0",
         "eslint-plugin-css": "^0.11.0",
-        "eslint-plugin-vue": "^10.0.0"
+        "eslint-plugin-vue": "^10.0.0",
+        "vue-eslint-parser": "^10.1.1"
     }
 }
