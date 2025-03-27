@@ -10,13 +10,13 @@
         "test": "eslint ."
     },
     "dependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
     },
     "devDependencies": {
-        "@types/react": "^18.0.37",
-        "@types/react-dom": "^18.0.11",
-        "@vitejs/plugin-react-swc": "^3.0.0",
+        "@types/react": "^19.0.12",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-react-swc": "^3.8.1",
         "@yutengjing/eslint-config-react": "workspace:*",
         "eslint-define-config": "^2.1.0"
     }

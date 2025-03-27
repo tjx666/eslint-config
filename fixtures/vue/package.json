@@ -10,12 +10,12 @@
         "test": "eslint ."
     },
     "dependencies": {
-        "vue": "^3.2.47"
+        "vue": "^3.5.13"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^4.1.0",
+        "@vitejs/plugin-vue": "^5.2.3",
         "@yutengjing/eslint-config-vue": "workspace:*",
         "eslint-define-config": "^2.1.0",
-        "vite": "^2.6.4"
+        "vite": "^6.2.3"
     }
 }
