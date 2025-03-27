@@ -3,10 +3,12 @@
 import { builtinModules } from 'node:module';
 
 import js from '@eslint/js';
-// import markdown from '@eslint/markdown';
+import markdown from '@eslint/markdown';
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import eslintPluginYutengjing from '@yutengjing/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
+// eslint-disable-next-line import-x/default
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import html from 'eslint-plugin-html';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
@@ -153,11 +155,13 @@ export const languagesConfig = defineConfig([
             parser: yamlParser,
         },
     },
-    // ...markdown.configs.recommended,
+    ...markdown.configs.recommended,
+    ...markdown.configs.processor,
 ]);
 
 export default defineConfig([
     js.configs.recommended,
+    languagesConfig,
 
     // import
     eslintPluginImportX.flatConfigs.recommended,
@@ -424,6 +428,7 @@ export default defineConfig([
     },
 
     lastConfig,
+    eslintConfigPrettier,
 ]);
 
-export { default as eslintConfigPrettier } from 'eslint-config-prettier/flat';
+export { eslintConfigPrettier };
