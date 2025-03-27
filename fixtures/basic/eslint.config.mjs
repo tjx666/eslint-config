@@ -1,3 +1,1 @@
-import basic from '@yutengjing/eslint-config-basic';
-
-export default basic;
+export { default } from '@yutengjing/eslint-config-basic';

@@ -1,28 +1,28 @@
 // @ts-check
 
-import { defineConfig } from 'eslint/config';
+import { builtinModules } from 'node:module';
+
 import js from '@eslint/js';
-import eslintPluginImportX from 'eslint-plugin-import-x';
-import globals from 'globals';
-import html from 'eslint-plugin-html';
+// import markdown from '@eslint/markdown';
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
+import eslintPluginYutengjing from '@yutengjing/eslint-plugin';
+import { defineConfig } from 'eslint/config';
+import html from 'eslint-plugin-html';
+import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsonc from 'eslint-plugin-jsonc';
-// import markdown from '@eslint/markdown';
 import nodePlugin from 'eslint-plugin-n';
-import * as nodeDependenciesPlugin from 'eslint-plugin-node-dependencies';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
+import * as nodeDependenciesPlugin from 'eslint-plugin-node-dependencies';
 import pluginPromise from 'eslint-plugin-promise';
 import * as regexpPlugin from 'eslint-plugin-regexp';
-import { builtinModules } from 'node:module';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import unusedImports from 'eslint-plugin-unused-imports';
 import eslintPluginYml from 'eslint-plugin-yml';
-import eslintPluginYutengjing from '@yutengjing/eslint-plugin';
-import jsonParser from 'jsonc-eslint-parser';
-import yamlParser from 'yaml-eslint-parser';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import globals from 'globals';
+import * as jsonParser from 'jsonc-eslint-parser';
+import * as yamlParser from 'yaml-eslint-parser';
 
 const off = 'off';
 const warn = 'warn';
@@ -143,21 +143,19 @@ const lastConfig = defineConfig([
 
 export const languagesConfig = defineConfig([
     {
-        files: ['*.json', '*.jsonc', '*.json5'],
+        files: ['**/*.json', '**/*.jsonc', '**/*.json5'],
         languageOptions: {
             parser: jsonParser,
         },
     },
     {
-        files: ['*.yaml', '*.yml'],
+        files: ['**/*.yaml', '**/*.yml'],
         languageOptions: {
             parser: yamlParser,
         },
     },
     // ...markdown.configs.recommended,
 ]);
-
-export { eslintConfigPrettier };
 
 export default defineConfig([
     js.configs.recommended,
@@ -210,7 +208,7 @@ export default defineConfig([
     // node
     ...nodeDependenciesPlugin.configs['flat/recommended'],
     {
-        files: ['scripts/**/*.*', 'cli.*'],
+        files: ['**/scripts/**/*.*'],
         rules: {
             'no-console': off,
         },
@@ -247,7 +245,7 @@ export default defineConfig([
     // json
     ...jsonc.configs['flat/recommended-with-jsonc'],
     {
-        files: ['package.json'],
+        files: ['**/package.json'],
         rules: {
             'jsonc/sort-keys': [
                 error,
@@ -274,7 +272,7 @@ export default defineConfig([
     // yaml
     ...eslintPluginYml.configs['flat/recommended'],
     {
-        files: ['*.yaml', '*.yml'],
+        files: ['**/*.yaml', '**/*.yml'],
         rules: {
             'yml/no-empty-document': off,
         },
@@ -406,7 +404,7 @@ export default defineConfig([
         },
     },
     {
-        files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
+        files: ['**/*.test.ts', '**/*.test.js', '**/*.spec.ts', '**/*.spec.js'],
         rules: {
             'no-unused-expressions': off,
             'no-only-tests/no-only-tests': error,
@@ -428,3 +426,5 @@ export default defineConfig([
 
     lastConfig,
 ]);
+
+export { default as eslintConfigPrettier } from 'eslint-config-prettier/flat';

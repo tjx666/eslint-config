@@ -1,12 +1,12 @@
 // @ts-check
 
 import eslintConfigBasic, {
-    languagesConfig,
     eslintConfigPrettier,
+    languagesConfig,
 } from '@yutengjing/eslint-config-basic';
-import tseslint from 'typescript-eslint';
-import eslintPluginImportX from 'eslint-plugin-import-x';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import eslintPluginImportX from 'eslint-plugin-import-x';
+import tseslint from 'typescript-eslint';
 
 const off = 'off';
 const error = 'error';
@@ -44,7 +44,7 @@ export default tseslint.config(
     },
 
     {
-        files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+        files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
         rules: {
             'import-x/no-unresolved': off,
             'import-x/default': off,
@@ -65,7 +65,7 @@ export default tseslint.config(
     },
 
     {
-        files: ['*.js', '*.cjs'],
+        files: ['**/*.js', '**/*.cjs'],
         rules: {
             '@typescript-eslint/no-var-requires': off,
         },

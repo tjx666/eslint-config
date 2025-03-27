@@ -43,7 +43,9 @@
     },
     "dependencies": {
         "@yutengjing/eslint-config-typescript": "workspace:*",
+        "@typescript-eslint/parser": "^8.28.0",
         "eslint-plugin-css": "^0.11.0",
+        "typescript-eslint": "^8.28.0",
         "eslint-plugin-vue": "^10.0.0",
         "vue-eslint-parser": "^10.1.1"
     }

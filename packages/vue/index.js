@@ -1,11 +1,12 @@
 // @ts-check
 
-import eslintConfigTypescript, { eslintConfigPrettier } from '@yutengjing/eslint-config-typescript';
-import tseslint from 'typescript-eslint';
-import pluginVue from 'eslint-plugin-vue';
-import * as cssPlugin from 'eslint-plugin-css';
 import vueParser from 'vue-eslint-parser';
-import tsParser from '@typescript-eslint/parser';
+
+import * as tsParser from '@typescript-eslint/parser';
+import eslintConfigTypescript, { eslintConfigPrettier } from '@yutengjing/eslint-config-typescript';
+import * as cssPlugin from 'eslint-plugin-css';
+import pluginVue from 'eslint-plugin-vue';
+import tseslint from 'typescript-eslint';
 
 const off = 'off';
 const warn = 'warn';
@@ -16,7 +17,7 @@ export default tseslint.config(
     ...pluginVue.configs['flat/recommended'],
     cssPlugin.configs['flat/recommended'],
     {
-        files: ['*.vue'],
+        files: ['**/*.vue'],
         languageOptions: {
             parser: vueParser,
             parserOptions: {
@@ -105,7 +106,7 @@ export default tseslint.config(
             ],
             'vue/prefer-template': error,
 
-            'vue/component-tags-order': [
+            'vue/block-order': [
                 error,
                 {
                     order: ['script', 'template', 'style'],

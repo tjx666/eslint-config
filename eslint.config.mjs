@@ -1,5 +1,5 @@
-import { defineConfig } from 'eslint/config';
 import eslintConfigTypescript from '@yutengjing/eslint-config-typescript';
+import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
     eslintConfigTypescript,
