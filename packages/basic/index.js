@@ -6,7 +6,7 @@ import js from '@eslint/js';
 // import markdown from '@eslint/markdown';
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import eslintPluginYutengjing from '@yutengjing/eslint-plugin';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import html from 'eslint-plugin-html';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
@@ -47,27 +47,6 @@ const lastConfig = defineConfig([
             reportUnusedDisableDirectives: true,
             reportUnusedInlineConfigs: 'error',
         },
-        ignores: [
-            '*.min.*',
-            '*.d.ts',
-            'CHANGELOG.md',
-            'dist',
-            'out',
-            'LICENSE*',
-            'output',
-            'coverage',
-            'public',
-            'temp',
-            'package-lock.json',
-            'pnpm-lock.yaml',
-            'yarn.lock',
-            '__snapshots__',
-            '.vscode-test',
-            '!.github',
-            '!.vitepress',
-            '!.vscode',
-            '**/.vitepress/cache',
-        ],
         rules: {
             // common
             'camelcase': off,
@@ -139,6 +118,26 @@ const lastConfig = defineConfig([
             'vars-on-top': error,
         },
     },
+    globalIgnores([
+        '**/*.min.*',
+        '**/*.d.ts',
+        '**/LICENSE*',
+        '**/package-lock.json',
+        '**/pnpm-lock.yaml',
+        '**/yarn.lock',
+        '**/dist/',
+        '**/out/',
+        '**/output/',
+        '**/coverage/',
+        '**/public/',
+        '**/temp/',
+        '**/__snapshots__/',
+        '**/.vscode-test/',
+        '**/.vitepress/cache/',
+        '!**/.github/',
+        '!**/.vitepress/',
+        '!**/.vscode/',
+    ]),
 ]);
 
 export const languagesConfig = defineConfig([
