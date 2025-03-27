@@ -343,13 +343,8 @@ export default defineConfig([
     },
 
     // unicorn
+    eslintPluginUnicorn.configs.recommended,
     {
-        languageOptions: {
-            globals: globals.builtin,
-        },
-        plugins: {
-            unicorn: eslintPluginUnicorn,
-        },
         rules: {
             // use eslint-plugin-regexp instead
             'unicorn/better-regex': off,
