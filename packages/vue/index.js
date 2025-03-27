@@ -16,21 +16,7 @@ export default tseslint.config(
     eslintConfigTypescript,
     ...pluginVue.configs['flat/recommended'],
     cssPlugin.configs['flat/recommended'],
-    {
-        files: ['**/*.vue'],
-        languageOptions: {
-            parser: vueParser,
-            parserOptions: {
-                parser: tsParser,
-            },
-        },
-        rules: {
-            'no-undef': off,
-            'no-unused-vars': off,
 
-            '@typescript-eslint/no-unused-vars': off,
-        },
-    },
     {
         settings: {
             'import-x/resolver': {
@@ -112,6 +98,22 @@ export default tseslint.config(
                     order: ['script', 'template', 'style'],
                 },
             ],
+        },
+    },
+
+    {
+        files: ['**/*.vue'],
+        languageOptions: {
+            parser: vueParser,
+            parserOptions: {
+                parser: tsParser,
+            },
+        },
+        rules: {
+            'no-undef': off,
+            'no-unused-vars': off,
+
+            '@typescript-eslint/no-unused-vars': off,
         },
     },
 

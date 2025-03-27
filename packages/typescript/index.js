@@ -41,49 +41,6 @@ export default tseslint.config(
                 }),
             ],
         },
-    },
-
-    {
-        files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
-        rules: {
-            'import-x/no-unresolved': off,
-            'import-x/default': off,
-            'no-useless-constructor': off,
-            'jsdoc/require-param-type': off,
-            'jsdoc/require-returns-check': off,
-            'jsdoc/require-returns-type': off,
-
-            // seems will cause error whe lint json if put in rules
-            '@typescript-eslint/consistent-type-imports': [
-                error,
-                {
-                    prefer: 'type-imports',
-                    fixStyle: 'separate-type-imports',
-                },
-            ],
-        },
-    },
-
-    {
-        files: ['**/*.js', '**/*.cjs'],
-        rules: {
-            '@typescript-eslint/no-var-requires': off,
-        },
-    },
-
-    {
-        // Code blocks in markdown file
-        files: ['**/*.md/*.*'],
-        rules: {
-            '@typescript-eslint/no-redeclare': off,
-            '@typescript-eslint/no-unused-vars': off,
-            '@typescript-eslint/no-use-before-define': off,
-            '@typescript-eslint/no-var-requires': off,
-            '@typescript-eslint/comma-dangle': off,
-        },
-    },
-
-    {
         rules: {
             // TS
             '@typescript-eslint/array-type': [error, { default: 'array-simple' }],
@@ -116,6 +73,46 @@ export default tseslint.config(
             '@typescript-eslint/no-non-null-assertion': off,
             '@typescript-eslint/parameter-properties': off,
             '@typescript-eslint/triple-slash-reference': off,
+        },
+    },
+
+    {
+        files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+        rules: {
+            'import-x/no-unresolved': off,
+            'import-x/default': off,
+            'no-useless-constructor': off,
+            'jsdoc/require-param-type': off,
+            'jsdoc/require-returns-check': off,
+            'jsdoc/require-returns-type': off,
+
+            // seems will cause error whe lint json if put in rules
+            '@typescript-eslint/consistent-type-imports': [
+                error,
+                {
+                    prefer: 'type-imports',
+                    fixStyle: 'separate-type-imports',
+                },
+            ],
+        },
+    },
+
+    {
+        files: ['**/*.js', '**/*.cjs'],
+        rules: {
+            '@typescript-eslint/no-var-requires': off,
+        },
+    },
+
+    {
+        // Code blocks in markdown file
+        files: ['**/*.md/**'],
+        rules: {
+            '@typescript-eslint/no-redeclare': off,
+            '@typescript-eslint/no-unused-vars': off,
+            '@typescript-eslint/no-use-before-define': off,
+            '@typescript-eslint/no-var-requires': off,
+            '@typescript-eslint/comma-dangle': off,
         },
     },
 

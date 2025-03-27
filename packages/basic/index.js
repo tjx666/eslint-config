@@ -140,6 +140,28 @@ const lastConfig = defineConfig([
         '!**/.vitepress/',
         '!**/.vscode/',
     ]),
+    {
+        files: ['**/scripts/**/*.*'],
+        rules: {
+            'no-console': off,
+            'unicorn/no-process-exit': off,
+        },
+    },
+    // markdown
+    {
+        // Code blocks in markdown file
+        files: ['**/*.md/**'],
+        rules: {
+            'import-x/no-unresolved': off,
+            'no-alert': off,
+            'no-console': off,
+            'no-restricted-imports': off,
+            'no-undef': off,
+            'no-unused-expressions': off,
+            'no-unused-vars': off,
+            'unused-imports/no-unused-vars': off,
+        },
+    },
 ]);
 
 export const languagesConfig = defineConfig([
@@ -211,12 +233,6 @@ export default defineConfig([
     // node
     ...nodeDependenciesPlugin.configs['flat/recommended'],
     {
-        files: ['**/scripts/**/*.*'],
-        rules: {
-            'no-console': off,
-        },
-    },
-    {
         plugins: {
             n: nodePlugin,
         },
@@ -278,22 +294,6 @@ export default defineConfig([
         files: ['**/*.yaml', '**/*.yml'],
         rules: {
             'yml/no-empty-document': off,
-        },
-    },
-
-    // markdown
-    {
-        // Code blocks in markdown file
-        files: ['**/*.md/*.*'],
-        rules: {
-            'import-x/no-unresolved': off,
-            'no-alert': off,
-            'no-console': off,
-            'no-restricted-imports': off,
-            'no-undef': off,
-            'no-unused-expressions': off,
-            'no-unused-vars': off,
-            'unused-imports/no-unused-vars': off,
         },
     },
 
