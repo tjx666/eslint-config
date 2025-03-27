@@ -1,6 +1,6 @@
 {
     "name": "@yutengjing/eslint-config-react",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "eslint config optimized for react",
     "author": {
         "name": "YuTengjing",
