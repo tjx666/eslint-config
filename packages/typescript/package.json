@@ -42,6 +42,7 @@
     "dependencies": {
         "typescript-eslint": "^8.28.0",
         "@yutengjing/eslint-config-basic": "workspace:*",
-        "eslint-import-resolver-typescript": "^4.2.5"
+        "eslint-import-resolver-typescript": "^4.2.5",
+        "eslint-plugin-import-x": "^4.9.3"
     }
 }

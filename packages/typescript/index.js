@@ -1,13 +1,17 @@
 // @ts-check
 
-import eslintConfigBasic, { languagesConfig } from '@yutengjing/eslint-config-basic';
+import eslintConfigBasic, {
+    languagesConfig,
+    eslintConfigPrettier,
+} from '@yutengjing/eslint-config-basic';
 import tseslint from 'typescript-eslint';
 import eslintPluginImportX from 'eslint-plugin-import-x';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 const off = 'off';
 const error = 'error';
+
+export { eslintConfigPrettier };
 
 export default tseslint.config(
     eslintConfigBasic,
@@ -29,9 +33,6 @@ export default tseslint.config(
                         '.cts',
                         '.d.ts',
                     ],
-                },
-                typescript: {
-                    alwaysTryTypes: true,
                 },
             },
             'import-x/resolver-next': [

@@ -2,27 +2,13 @@
     "name": "@yutengjing/eslint-config-monorepo",
     "version": "1.7.1",
     "private": true,
-    "packageManager": "pnpm@9.14.4",
+    "packageManager": "pnpm@10.7.0",
     "author": {
         "name": "YuTengjing",
         "url": "https://github.com/tjx666",
         "email": "ytj2713151713@gmail.com"
     },
     "license": "MIT",
-    "eslintConfig": {
-        "extends": [
-            "plugin:eslint-plugin/recommended",
-            "@yutengjing/eslint-config-typescript"
-        ],
-        "ignorePatterns": [
-            "fixtures",
-            "packages/eslint-plugin/docs/rules/**/*.md"
-        ],
-        "rules": {
-            "jsdoc/no-undefined-types": 0,
-            "@typescript-eslint/no-require-imports": 0
-        }
-    },
     "prettier": "@yutengjing/prettier-config",
     "lint-staged": {
         "*.{js,jsx,ts,tsx,json,md}": "prettier --write"

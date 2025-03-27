@@ -1,4 +1,4 @@
-import eslintConfigTypescript from '@yutengjing/eslint-config-typescript';
+import eslintConfigTypescript, { eslintConfigPrettier } from '@yutengjing/eslint-config-typescript';
 import tseslint from 'typescript-eslint';
 import * as cssPlugin from 'eslint-plugin-css';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -6,7 +6,6 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import eslintReact from '@eslint-react/eslint-plugin';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default tseslint.config(
     eslintConfigTypescript,

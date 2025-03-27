@@ -157,9 +157,10 @@ export const languagesConfig = defineConfig([
     // ...markdown.configs.recommended,
 ]);
 
+export { eslintConfigPrettier };
+
 export default defineConfig([
     js.configs.recommended,
-    languagesConfig,
 
     // import
     eslintPluginImportX.flatConfigs.recommended,
@@ -425,6 +426,5 @@ export default defineConfig([
         },
     },
 
-    ...lastConfig,
-    eslintConfigPrettier,
+    lastConfig,
 ]);
