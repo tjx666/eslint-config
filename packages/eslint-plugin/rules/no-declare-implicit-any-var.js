@@ -26,10 +26,19 @@ const create = (context) => {
                     const { init } = declarator;
                     // let a;
                     // let a = [];
+                    // const a = ref();
+                    // const a = ref([]);
                     if (
                         declarator.id.typeAnnotation == null &&
                         (init === null ||
-                            (init.type === 'ArrayExpression' && init.elements.length === 0))
+                            (init.type === 'ArrayExpression' && init.elements.length === 0) ||
+                            (init.type === 'CallExpression' &&
+                                init.callee.type === 'Identifier' &&
+                                init.callee.name === 'ref' &&
+                                init.typeArguments == null &&
+                                (init.arguments.length === 0 ||
+                                    (init.arguments[0].type === 'ArrayExpression' &&
+                                        init.arguments[0].elements.length === 0))))
                     ) {
                         context.report({
                             node: declarator,
