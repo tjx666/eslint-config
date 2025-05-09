@@ -13,6 +13,10 @@ ruleTester.run('no-declare-implicit-any-var', rule, {
         },
         {
             filename: 'test.ts',
+            code: 'const a = ref([] as string[])',
+        },
+        {
+            filename: 'test.ts',
             code: 'const a = ref<string>()',
         },
         {
