@@ -1,5 +1,6 @@
 import eslintConfigTypescript from '@yutengjing/eslint-config-typescript';
 import { defineConfig } from 'eslint/config';
+import globals from "globals";
 
 export default defineConfig([
     eslintConfigTypescript,
@@ -10,4 +11,14 @@ export default defineConfig([
             '@typescript-eslint/no-require-imports': 0,
         },
     },
+    {
+        files: [
+            "**/tests/**/*.test.js"
+        ],
+        languageOptions: {
+            globals: {
+                ...globals.mocha
+            }
+        }
+    }
 ]);
