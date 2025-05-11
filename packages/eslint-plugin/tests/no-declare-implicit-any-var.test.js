@@ -54,12 +54,10 @@ describe('no-declare-implicit-any-var mock with vue', () => {
     let stub;
 
     before(() => {
-        // 先 stub
         stub = sinon.stub(localPkg, 'isPackageExists').returns(true);
     });
 
     after(() => {
-        // 所有测试后恢复
         stub.restore();
     });
 
