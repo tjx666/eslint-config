@@ -1,6 +1,10 @@
 'use strict';
 
 const path = require('node:path');
+const localPkg = require('local-pkg');
+
+// https://github.com/antfu/eslint-config/blob/v4.13.0/src/factory.ts#L50
+const VuePackages = ['vue', 'nuxt', 'vitepress', '@slidev/cli'];
 
 const MESSAGE_ID_DEFAULT = 'default';
 
@@ -15,6 +19,8 @@ const create = (context) => {
             /<script\s[^>]*?\blang=['"]ts['"][^>]*>/.test(context.sourceCode.getText()));
     if (!isTs) return {};
 
+    const enableVue = ext === '.vue' || VuePackages.some((i) => localPkg.isPackageExists(i));
+
     return {
         VariableDeclaration(node) {
             // except for (let item of arr)
@@ -26,10 +32,20 @@ const create = (context) => {
                     const { init } = declarator;
                     // let a;
                     // let a = [];
+                    // const a = ref();
+                    // const a = ref([]);
                     if (
                         declarator.id.typeAnnotation == null &&
                         (init === null ||
-                            (init.type === 'ArrayExpression' && init.elements.length === 0))
+                            (init.type === 'ArrayExpression' && init.elements.length === 0) ||
+                            (enableVue &&
+                                init.type === 'CallExpression' &&
+                                init.callee.type === 'Identifier' &&
+                                init.callee.name === 'ref' &&
+                                init.typeArguments == null &&
+                                (init.arguments.length === 0 ||
+                                    (init.arguments[0].type === 'ArrayExpression' &&
+                                        init.arguments[0].elements.length === 0))))
                     ) {
                         context.report({
                             node: declarator,
