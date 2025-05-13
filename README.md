@@ -24,25 +24,14 @@ bun add -d @yutengjing/eslint-config-typescript
 
 ### Integrate
 
-add this preset to `.eslintrc` or `.eslintrc.js`
+> [!note]
+> This config only support eslint version >= _8.x_.
 
-```json
-{
-  "extends": "@yutengjing/eslint-config-typescript"
-}
+Add following to `eslint.config.mjs`:
+
+```js
+export { default } from '@yutengjing/eslint-config-typescript';
 ```
-
-or you can simply add it to package.json:
-
-```json
-{
-  "eslintConfig": {
-    "extends": "@yutengjing/eslint-config-typescript"
-  }
-}
-```
-
-> You don't need `.eslintignore` normally as it has been provided by the preset.
 
 ### Add script for package.json
 
@@ -90,18 +79,18 @@ Some useful personal eslint rules:
 
 - [@yutengjing/comment-autocorrect](./packages/eslint-plugin/rules/comment-autocorrect.js)
 - [@yutengjing/no-missing-script](./packages/eslint-plugin/rules/no-missing-script.js)
-- [@yutengjing/format-mui-sx-selector.js](./packages/eslint-plugin/rules/format-mui-sx-selector.js)
+- [@yutengjing/no-relative-import](./packages/eslint-plugin/rules/no-relative-import.js)
+- [@yutengjing/prefer-jsdoc](./packages/eslint-plugin/rules/prefer-jsdoc.js)
+- [@yutengjing/format-mui-sx-selector](./packages/eslint-plugin/rules/format-mui-sx-selector.js)
+- [@yutengjing/no-declare-implicit-any-var](./packages/eslint-plugin/rules/no-declare-implicit-any-var.js)
 - [@yutengjing/no-mui-sx-selector-missing-dot](./packages/eslint-plugin/rules/no-mui-sx-selector-missing-dot.js)
 - [@yutengjing/no-reference-deps](./packages/eslint-plugin/rules/no-reference-deps.js)
-- [@yutengjing/matching-remove-event-listener.js](./packages/eslint-plugin/rules/matching-remove-event-listener.js)
+- [@yutengjing/matching-remove-event-listener](./packages/eslint-plugin/rules/matching-remove-event-listener.js)
 - [@yutengjing/no-uppercase-module-path](./packages/eslint-plugin/rules/no-uppercase-module-path.js)
-- [@yutengjing/no-declare-implicit-any-var.js](./packages/eslint-plugin/rules/no-declare-implicit-any-var.js)
 - [@yutengjing/no-vue-filename-index](./packages/eslint-plugin/rules/no-vue-filename-index.js)
 - [@yutengjing/no-inline-function-event-listener](./packages/eslint-plugin/rules/no-inline-function-event-listener.js)
-- [@yutengjing/prefer-jsdoc](./packages/eslint-plugin/rules/prefer-jsdoc.js)
-- [@yutengjing/no-invalid-mui-breakpoints.js](./packages/eslint-plugin/rules/no-invalid-mui-breakpoints.js)
+- [@yutengjing/no-invalid-mui-breakpoints](./packages/eslint-plugin/rules/no-invalid-mui-breakpoints.js)
 - [@yutengjing/no-missing-remove-event-listener](./packages/eslint-plugin/rules/no-missing-remove-event-listener.js)
-- [@yutengjing/no-relative-import](./packages/eslint-plugin/rules/no-relative-import.js)
 
 check the [source code](./packages/eslint-plugin/rules) or [rule docs](./packages/eslint-plugin/docs/rules/) for details.
 
