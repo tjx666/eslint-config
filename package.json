@@ -1,6 +1,6 @@
 {
     "name": "@yutengjing/eslint-config-monorepo",
-    "version": "2.5.1",
+    "version": "2.6.0",
     "private": true,
     "packageManager": "pnpm@10.7.0",
     "author": {
