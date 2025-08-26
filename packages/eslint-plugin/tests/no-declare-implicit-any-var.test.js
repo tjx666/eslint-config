@@ -121,6 +121,24 @@ describe('no-declare-implicit-any-var mock with vue', () => {
                     },
                 ],
             },
+            {
+                filename: 'test.ts',
+                code: 'const a = shallowRef()',
+                errors: [
+                    {
+                        messageId: MESSAGE_ID_DEFAULT,
+                    },
+                ],
+            },
+            {
+                filename: 'test.ts',
+                code: 'const a = shallowRef([])',
+                errors: [
+                    {
+                        messageId: MESSAGE_ID_DEFAULT,
+                    },
+                ],
+            },
         ],
     });
 });

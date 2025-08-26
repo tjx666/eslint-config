@@ -41,7 +41,7 @@ const create = (context) => {
                             (enableVue &&
                                 init.type === 'CallExpression' &&
                                 init.callee.type === 'Identifier' &&
-                                init.callee.name === 'ref' &&
+                                (init.callee.name === 'ref' || init.callee.name === 'shallowRef') &&
                                 init.typeArguments == null &&
                                 (init.arguments.length === 0 ||
                                     (init.arguments[0].type === 'ArrayExpression' &&
