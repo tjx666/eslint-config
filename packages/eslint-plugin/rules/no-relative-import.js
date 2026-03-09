@@ -164,7 +164,7 @@ function create(context) {
     const onlyAbsoluteImports = options.onlyAbsoluteImports || false;
     const respectAliasOrder = options.respectAliasOrder || false;
 
-    const filename = context.getFilename();
+    const filename = context.filename;
     const baseDir = findDirWithFile('package.json', path.dirname(filename));
 
     if (!baseDir) {
@@ -190,7 +190,7 @@ function create(context) {
         if (!node.source) return;
 
         const importPath = node.source.value;
-        const filename = context.getFilename();
+        const filename = context.filename;
 
         const absolutePath = path.normalize(path.join(path.dirname(filename), importPath));
         const expectedPath = getExpectedPath(

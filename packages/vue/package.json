@@ -39,14 +39,14 @@
         "index.js"
     ],
     "peerDependencies": {
-        "eslint": "^9.23.0"
+        "eslint": "^10.0.3"
     },
     "dependencies": {
+        "@typescript-eslint/parser": "^8.56.1",
         "@yutengjing/eslint-config-typescript": "workspace:*",
-        "@typescript-eslint/parser": "^8.28.0",
-        "eslint-plugin-css": "^0.11.0",
-        "typescript-eslint": "^8.28.0",
-        "eslint-plugin-vue": "^10.0.0",
-        "vue-eslint-parser": "^10.1.1"
+        "eslint-plugin-css": "^0.12.0",
+        "eslint-plugin-vue": "^10.8.0",
+        "typescript-eslint": "^8.56.1",
+        "vue-eslint-parser": "^10.4.0"
     }
 }

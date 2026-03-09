@@ -5,6 +5,7 @@ import { builtinModules } from 'node:module';
 import js from '@eslint/js';
 import markdown from '@eslint/markdown';
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
+import stylistic from '@stylistic/eslint-plugin';
 import eslintPluginYutengjing from '@yutengjing/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
 // eslint-disable-next-line import-x/default
@@ -406,6 +407,13 @@ export default defineConfig([
         rules: {
             'no-unused-expressions': off,
             'no-only-tests/no-only-tests': error,
+        },
+    },
+
+    // stylistic
+    {
+        plugins: {
+            '@stylistic': stylistic,
         },
     },
 
